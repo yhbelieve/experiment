@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yuhao.experiment.mapper.IndexMapper">
+    <!--t通过查找所有的A级分类-->
+    <select id="findAcategory" resultType="map">
+        select * from acategory
+        <where>
+
+            <if test="axs!=null">
+                axs=#{axs}
+            </if>
+        </where>
+
+    </select>
+    <!--通过aid查找相关的B分类-->
+    <select id="findBcategoryByAid" resultType="map">
+        SELECT * FROM bcategory WHERE aid=#{aid}
+        <if test="isShow !=null">
+
+            AND is_show =#{isShow}
+        </if>
+    </select>
+    <!--通过bid查找所有的C级分类-->
+    <select id="findCcategoryByBid" resultType="map">
+        select * from ccategory where bid=#{bid}
+        <if test="isShow">
+            and is_show =#{isShow}
+        </if>
+    </select>
+    <!--通过video中的相关属性查找所有的video，video中的内容包括视频的分类，视频用户相关信息，视频的相关信息-->
+    <select id="findVideo" resultType="map">
+
+        SELECT video.*, ccategory.*,user.* FROM video,ccategory,user
+        WHERE video.`cid`=ccategory.`cid`
+        AND video.`uid`=user.`uid`
+        <if test="cid!=null">
+            AND video.`cid`=#{cid}
+
+        </if>
+
+        <if test="isReview!=null">
+            AND video.`is_review`=#{isReview}
+
+        </if>
+        <if test="isShow!=null">
+
+            AND video.`is_show`=#{isShow}
+        </if>
+        <if test="flag!=null">
+
+            AND video.`flag`=#{flag}
+        </if>
+        <if test="vid!=null">
+          and   video.`vid`=#{vid}
+        </if>
+        <if test="videoName!=null">
+            AND video.`video_name`=#{videoName}
+        </if>
+    </select>
+    <select id="findComment" resultType="map">
+
+    </select>
+</mapper>
