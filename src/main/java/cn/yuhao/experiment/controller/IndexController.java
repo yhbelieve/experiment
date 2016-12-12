@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/Index")
 public class IndexController {
 
 	@Resource
@@ -26,11 +26,19 @@ public class IndexController {
 	
 	@Resource
 	private SysUserService sysUserService;
-	@RequestMapping("/")
+
+	/**
+	 * 显示首页内容
+	 * @param model
+	 * @return
+	 */
+
+
+	@RequestMapping("/showIndex")
 	public String findAcategory(Model model){
 
-
-		return "index";
+		System.out.println("ffffffffffffffffffffffffffffffffffffff");
+		return "view/index";
 	}
 
 

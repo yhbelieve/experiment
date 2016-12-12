@@ -25,9 +25,9 @@
     表示当浏览器有静态资源请求的时候，并且请求url路径中带有：/js/，则这个资源跑到webapp目录下的/WEB-INF/statics/js/去找
     比如我们在 JSP 中引入一个 js 文件：src="${webRoot}/js/jQuery-core/jquery-1.6.1.min.js
     -->
-    <mvc:resources mapping="/statics/**" location="/WEB-INF/statics/"/>
+    <mvc:resources mapping="/view/**" location="/WEB-INF/statics/view/"/>
     <mvc:resources mapping="/admin/**" location="/admin/"/>
-    <mvc:resources mapping="/view/**" location="/view/"/>
+    <!--<mvc:resources mapping="/view/**" location="/view/"/>-->
     <mvc:resources mapping="/user/**" location="/user/"/>
 
 
