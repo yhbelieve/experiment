@@ -1,9 +1,14 @@
 package cn.yuhao.experiment.controller;
 
+import cn.yuhao.experiment.pojo.Acategory;
+import cn.yuhao.experiment.pojo.Bcategory;
 import cn.yuhao.experiment.pojo.SysUser;
 import cn.yuhao.experiment.pojo.User;
 import cn.yuhao.experiment.service.IndexService;
 import cn.yuhao.experiment.service.SysUserService;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/Index")
@@ -36,8 +40,20 @@ public class IndexController {
 
 	@RequestMapping("/showIndex")
 	public String findAcategory(Model model){
-
-		System.out.println("ffffffffffffffffffffffffffffffffffffff");
+		Acategory acategory=new Acategory();
+		acategory.setAxs(true);
+		List<Map> list=indexService.findAcategory(acategory);
+		System.out.println(list.size());
+		for (int i=0;i<list.size();i++){
+			Bcategory bcategory=new Bcategory();
+			bcategory.setAid(list.get(i).get("aid").toString());
+			List< Bcategory> bcategories=indexService.findBcategoryByAid(bcategory);
+			list.get(i).put("bname",bcategories);
+		}
+		JSONArray list1=JSON.parseArray(JSON.toJSONString(list));
+		System.out.println(list1);
+		model.addAttribute("list",list1);
+		System.out.println("rwww111wrrrrrrfffffffffffffffffffffffffffffffff");
 		return "view/index";
 	}
 

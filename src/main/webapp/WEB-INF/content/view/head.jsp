@@ -12,8 +12,8 @@
             </div>
             <div class="header-left">
                 <ul>
-                    <li ><a href="login.jsp"  >Login</a></li>
-                    <li><a  href="register.jsp"  >Register</a></li>
+                    <li ><a href="login.jsp"  >登录</a></li>
+                    <li><a  href="register.jsp"  >注册</a></li>
 
                 </ul>
                 <div class="cart box_1">
@@ -37,121 +37,26 @@
             </div>
             <div class=" h_menu4">
                 <ul class="memenu skyblue">
-                    <li class="active grid"><a class="color8" href="index.jsp">Home</a></li>
-                    <li><a class="color1" href="#">Men</a>
+                    <c:forEach items="${list}" var="list">
+                    <li><a class="color1" href="#">${list.aname}</a>
                         <div class="mepanel">
                             <div class="row">
+                                <c:forEach items="${list.bname}" var="listb" >
                                 <div class="col1">
                                     <div class="h_nav">
                                         <ul>
-                                            <li><a href="products.jsp">Accessories</a></li>
-                                            <li><a href="products.jsp">Bags</a></li>
-                                            <li><a href="products.jsp">Caps & Hats</a></li>
-                                            <li><a href="products.jsp">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="products.jsp">Jackets & Coats</a></li>
-                                            <li><a href="products.jsp">Jeans</a></li>
-                                            <li><a href="products.jsp">Jewellery</a></li>
-                                            <li><a href="products.jsp">Jumpers & Cardigans</a></li>
-                                            <li><a href="products.jsp">Leather Jackets</a></li>
-                                            <li><a href="products.jsp">Long Sleeve T-Shirts</a></li>
-                                            <li><a href="products.jsp">Loungewear</a></li>
+                                            <li><a href="products.jsp">${listb.bname}</a></li>
+
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <ul>
-                                            <li><a href="products.jsp">Shirts</a></li>
-                                            <li><a href="products.jsp">Shoes, Boots & Trainers</a></li>
-                                            <li><a href="products.jsp">Shorts</a></li>
-                                            <li><a href="products.jsp">Suits & Blazers</a></li>
-                                            <li><a href="products.jsp">Sunglasses</a></li>
-                                            <li><a href="products.jsp">Sweatpants</a></li>
-                                            <li><a href="products.jsp">Swimwear</a></li>
-                                            <li><a href="products.jsp">Trousers & Chinos</a></li>
-                                            <li><a href="products.jsp">T-Shirts</a></li>
-                                            <li><a href="products.jsp">Underwear & Socks</a></li>
-                                            <li><a href="products.jsp">Vests</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Popular Brands</h4>
-                                        <ul>
-                                            <li><a href="products.jsp">Levis</a></li>
-                                            <li><a href="products.jsp">Persol</a></li>
-                                            <li><a href="products.jsp">Nike</a></li>
-                                            <li><a href="products.jsp">Edwin</a></li>
-                                            <li><a href="products.jsp">New Balance</a></li>
-                                            <li><a href="products.jsp">Jack & Jones</a></li>
-                                            <li><a href="products.jsp">Paul Smith</a></li>
-                                            <li><a href="products.jsp">Ray-Ban</a></li>
-                                            <li><a href="products.jsp">Wood Wood</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </li>
-                    <li class="grid"><a class="color2" href="#">	Women</a>
-                        <div class="mepanel">
-                            <div class="row">
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <ul>
-                                            <li><a href="products.jsp">Accessories</a></li>
-                                            <li><a href="products.jsp">Bags</a></li>
-                                            <li><a href="products.jsp">Caps & Hats</a></li>
-                                            <li><a href="products.jsp">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="products.jsp">Jackets & Coats</a></li>
-                                            <li><a href="products.jsp">Jeans</a></li>
-                                            <li><a href="products.jsp">Jewellery</a></li>
-                                            <li><a href="products.jsp">Jumpers & Cardigans</a></li>
-                                            <li><a href="products.jsp">Leather Jackets</a></li>
-                                            <li><a href="products.jsp">Long Sleeve T-Shirts</a></li>
-                                            <li><a href="products.jsp">Loungewear</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <ul>
-                                            <li><a href="products.jsp">Shirts</a></li>
-                                            <li><a href="products.jsp">Shoes, Boots & Trainers</a></li>
-                                            <li><a href="products.jsp">Shorts</a></li>
-                                            <li><a href="products.jsp">Suits & Blazers</a></li>
-                                            <li><a href="products.jsp">Sunglasses</a></li>
-                                            <li><a href="products.jsp">Sweatpants</a></li>
-                                            <li><a href="products.jsp">Swimwear</a></li>
-                                            <li><a href="products.jsp">Trousers & Chinos</a></li>
-                                            <li><a href="products.jsp">T-Shirts</a></li>
-                                            <li><a href="products.jsp">Underwear & Socks</a></li>
-                                            <li><a href="products.jsp">Vests</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Popular Brands</h4>
-                                        <ul>
-                                            <li><a href="products.jsp">Levis</a></li>
-                                            <li><a href="products.jsp">Persol</a></li>
-                                            <li><a href="products.jsp">Nike</a></li>
-                                            <li><a href="products.jsp">Edwin</a></li>
-                                            <li><a href="products.jsp">New Balance</a></li>
-                                            <li><a href="products.jsp">Jack & Jones</a></li>
-                                            <li><a href="products.jsp">Paul Smith</a></li>
-                                            <li><a href="products.jsp">Ray-Ban</a></li>
-                                            <li><a href="products.jsp">Wood Wood</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a class="color4" href="blog.jsp">Blog</a></li>
-                    <li><a class="color6" href="contact.jsp">Conact</a></li>
+                    </c:forEach>
+
+
                 </ul>
             </div>
 

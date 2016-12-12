@@ -11,7 +11,7 @@ import java.util.Map;
 
 public interface IndexMapper {
 
-    public List<Acategory> findAcategory(Acategory acategory);
+    public List<Map> findAcategory(Acategory acategory);
 
     public List<Bcategory> findBcategoryByAid(Bcategory bcategory);
 

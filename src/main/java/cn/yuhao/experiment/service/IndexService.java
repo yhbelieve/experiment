@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public interface IndexService {
 
-    public List<Acategory> findAcategory(Acategory acategory);
+    public List<Map> findAcategory(Acategory acategory);
 
     public List<Bcategory> findBcategoryByAid(Bcategory bcategory);
 

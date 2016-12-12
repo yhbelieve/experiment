@@ -34,7 +34,7 @@ public class IndexServiceImpl implements IndexService {
     }
 
     @Override
-    public List<Acategory> findAcategory(Acategory acategory) {
+    public List<Map> findAcategory(Acategory acategory) {
         return indexMapper.findAcategory(acategory);
     }
 
