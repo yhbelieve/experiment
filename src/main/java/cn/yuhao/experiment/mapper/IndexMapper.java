@@ -1,21 +1,26 @@
 package cn.yuhao.experiment.mapper;
 
 
-import cn.yuhao.experiment.pojo.Acategory;
-import cn.yuhao.experiment.pojo.Bcategory;
-import cn.yuhao.experiment.pojo.Ccategory;
-import cn.yuhao.experiment.pojo.Video;
+import cn.yuhao.experiment.pojo.*;
 
 import java.util.List;
 import java.util.Map;
 
 public interface IndexMapper {
 
-    public List<Map> findAcategory(Acategory acategory);
+     List<Map> findAcategory(Acategory acategory);
 
-    public List<Bcategory> findBcategoryByAid(Bcategory bcategory);
+     List<Bcategory> findBcategoryByAid(Bcategory bcategory);
 
-    public List<Map> findVideo(Video video);
+     List<Map> findVideo(Video video);
 
-    public List<Map> findCcategoryByBid(Ccategory ccategory);
+     List<Map> findCcategoryByBid(Ccategory ccategory);
+
+    List<Map> findVideoByBid(String bid);
+
+    List<Map> findFile(String vid);
+
+    List<Map> findComment(Discuss discuss);
+
+    List<Map> findReply(Reply reply);
 }

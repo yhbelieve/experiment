@@ -27,6 +27,12 @@
             and is_show =#{isShow}
         </if>
     </select>
+    <select id="findVideoByBid" parameterType="String" resultType="map">
+        SELECT video.* FROM video,ccategory WHERE video.`cid`=ccategory.`cid`
+AND ccategory.`bid`=#{bid}
+    </select>
+
+
     <!--通过video中的相关属性查找所有的video，video中的内容包括视频的分类，视频用户相关信息，视频的相关信息-->
     <select id="findVideo" resultType="map">
 
@@ -51,13 +57,42 @@
             AND video.`flag`=#{flag}
         </if>
         <if test="vid!=null">
-          and   video.`vid`=#{vid}
+            and video.`vid`=#{vid}
         </if>
         <if test="videoName!=null">
             AND video.`video_name`=#{videoName}
         </if>
     </select>
     <select id="findComment" resultType="map">
+        SELECT * from discuss
+        <where>
+            <if test="videoId != null">
+                video_id=#{videoId}
+            </if>
+            <if test="blogId != null">
+                blog_id=#{blogId}
+            </if>
+            <if test="examId != null">
+                exam_id=#{examId}
+            </if>
+            <if test="uid != null">
+                uid=#{uid}
+            </if>
+        </where>
 
+    </select>
+    <select id="findReply" resultType="map" parameterType="String">
+        select * from reply
+        <where>
+            <if test="did!=null">
+                did=#{did}
+            </if>
+            <if test="uid!=null">
+                uid=#{uid}
+            </if>
+        </where>
+    </select>
+    <select id="findFile" resultType="map">
+     SELECT * from file where vid=#{vid}
     </select>
 </mapper>

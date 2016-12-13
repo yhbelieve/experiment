@@ -1,9 +1,6 @@
 package cn.yuhao.experiment.controller;
 
-import cn.yuhao.experiment.pojo.Acategory;
-import cn.yuhao.experiment.pojo.Bcategory;
-import cn.yuhao.experiment.pojo.SysUser;
-import cn.yuhao.experiment.pojo.User;
+import cn.yuhao.experiment.pojo.*;
 import cn.yuhao.experiment.service.IndexService;
 import cn.yuhao.experiment.service.SysUserService;
 import com.alibaba.fastjson.JSON;
@@ -43,7 +40,6 @@ public class IndexController {
 		Acategory acategory=new Acategory();
 		acategory.setAxs(true);
 		List<Map> list=indexService.findAcategory(acategory);
-		System.out.println(list.size());
 		for (int i=0;i<list.size();i++){
 			Bcategory bcategory=new Bcategory();
 			bcategory.setAid(list.get(i).get("aid").toString());
@@ -51,10 +47,25 @@ public class IndexController {
 			list.get(i).put("bname",bcategories);
 		}
 		JSONArray list1=JSON.parseArray(JSON.toJSONString(list));
-		System.out.println(list1);
 		model.addAttribute("list",list1);
-		System.out.println("rwww111wrrrrrrfffffffffffffffffffffffffffffffff");
 		return "view/index";
+	}
+	@RequestMapping("findBcategoryVideo/{bid}")
+	public  String findBcategoryVideo(Model model,@PathVariable("bid") String bid){
+		List<Map> maps=indexService.findVideoByBid(bid);
+		JSONArray list=JSON.parseArray(JSON.toJSONString(maps));
+		System.out.println(list);
+		model.addAttribute("list",list);
+		return "view/products";
+	}
+
+	@RequestMapping("findVideoById/{vid}")
+	public  String findVideoById(Model model,@PathVariable("vid") String vid){
+		Map maps=indexService.findVideoById(vid);
+		String video=JSON.toJSONString(maps);
+		System.out.println("---"+video);
+		model.addAttribute("list",video);
+		return "view/products";
 	}
 
 

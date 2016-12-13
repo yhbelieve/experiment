@@ -23,6 +23,13 @@ public class SSMTest {
 	@Resource
 	private IndexService indexService;
 	@Test
+	public void test2(){
+		Map maps=indexService.findVideoById("1371");
+		String video=JSON.toJSONString(maps);
+		System.out.println("---"+video);
+	}
+
+	@Test
 	public void test1() {
 //		SysUser sysUser = sysUserService.getById(1L);
 		Ccategory ccategory=new Ccategory();
