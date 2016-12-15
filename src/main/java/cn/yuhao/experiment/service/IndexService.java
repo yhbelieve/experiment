@@ -12,7 +12,7 @@ public interface IndexService {
 
      List<Map> findAcategory(Acategory acategory);
 
-     List<Bcategory> findBcategoryByAid(Bcategory bcategory);
+     List<Map> findBcategoryByAid(Bcategory bcategory);
 
      List<Map> findVideo(Video video);
 
@@ -22,7 +22,9 @@ public interface IndexService {
 
     Map<String,String> findVideoById(String vid);
 
+     Map<String,String> findAcategotyAll(String aid);
 
+     Bcategory selectByPrimaryKey(String bid);
 
 
 }

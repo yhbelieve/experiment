@@ -3,13 +3,13 @@
 <mapper namespace="cn.yuhao.experiment.mapper.IndexMapper">
     <!--t通过查找所有的A级分类-->
     <select id="findAcategory" resultType="map">
-        select * from acategory
-        <where>
+        select * from acategory where 1=1
+
 
             <if test="axs!=null">
-                axs=#{axs}
+               and axs=#{axs}
             </if>
-        </where>
+
 
     </select>
     <!--通过aid查找相关的B分类-->
@@ -64,33 +64,33 @@ AND ccategory.`bid`=#{bid}
         </if>
     </select>
     <select id="findComment" resultType="map">
-        SELECT * from discuss
-        <where>
+        SELECT * from discuss where 1=1
+
             <if test="videoId != null">
-                video_id=#{videoId}
+                and   video_id=#{videoId}
             </if>
             <if test="blogId != null">
-                blog_id=#{blogId}
+                and   blog_id=#{blogId}
             </if>
             <if test="examId != null">
-                exam_id=#{examId}
+                and  exam_id=#{examId}
             </if>
             <if test="uid != null">
-                uid=#{uid}
+                and  uid=#{uid}
             </if>
-        </where>
+
 
     </select>
     <select id="findReply" resultType="map" parameterType="String">
-        select * from reply
-        <where>
+        select * from reply WHEN 1=1
+
             <if test="did!=null">
-                did=#{did}
+             and   did=#{did}
             </if>
             <if test="uid!=null">
-                uid=#{uid}
+                and  uid=#{uid}
             </if>
-        </where>
+
     </select>
     <select id="findFile" resultType="map">
      SELECT * from file where vid=#{vid}

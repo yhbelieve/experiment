@@ -37,15 +37,15 @@
             </div>
             <div class=" h_menu4">
                 <ul class="memenu skyblue">
-                    <c:forEach items="${list}" var="list">
-                    <li><a class="color1" href="#">${list.aname}</a>
+                    <c:forEach items="${sessionScope.list}" var="list">
+                    <li><a class="color1" href="<c:url value="/Index/findBcategoryVideo/${list.bname[0].bid}"/>">${list.aname}</a>
                         <div class="mepanel">
                             <div class="row">
                                 <c:forEach items="${list.bname}" var="listb" >
                                 <div class="col1">
                                     <div class="h_nav">
                                         <ul>
-                                            <li><a href="products.jsp">${listb.bname}</a></li>
+                                            <li><a href="<c:url value="/Index/findBcategoryVideo/${listb.bid}"/>">${listb.bname}</a></li>
 
                                         </ul>
                                     </div>

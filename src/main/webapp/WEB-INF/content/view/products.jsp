@@ -4,32 +4,30 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+			+ path + "/view";
+	request.setAttribute("basePath", basePath);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Products</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${basePath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="${basePath}/js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="${basePath}/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--fonts-->
-<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'><!--//fonts-->
-<!-- start menu -->
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
+
+<link href="${basePath}/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="${basePath}/js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-<script src="js/simpleCart.min.js"> </script>
+<script src="${basePath}/js/simpleCart.min.js"> </script>
 </head>
 <body>
 <!--header-->
@@ -44,45 +42,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  
 				<div class=" rsidebar span_1_of_left">
 					<div class="of-left">
-						<h3 class="cate">Categories</h3>
+						<h3 class="cate">${map.aname}</h3>
 					</div>
 		 <ul class="menu">
-		<li class="item1"><a href="#">Men </a>
+			 <c:forEach items="${map.bcategorys}" var="bcategorys">
+		<li class="item1"><a href="#">${bcategorys.bname} </a>
 			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails </a></li>
+				<c:forEach items="${bcategorys.ccategorys}" var="cctegorys">
+				<li class="subitem1"><a href="<c:url value="/Index/findCcategoryVideo/${cctegorys.cid}/${cctegorys.bid}"/>">${cctegorys.cname} </a></li>
+
+				</c:forEach>
+
 			</ul>
 		</li>
-		<li class="item2"><a href="#">Women </a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails </a></li>
-			</ul>
-		</li>
-		<li class="item3"><a href="#">Kids</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails</a></li>
-			</ul>
-		</li>
-		<li class="item4"><a href="#">Accesories</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="single.jsp">Cute Kittens </a></li>
-				<li class="subitem2"><a href="single.jsp">Strange Stuff </a></li>
-				<li class="subitem3"><a href="single.jsp">Automatic Fails</a></li>
-			</ul>
-		</li>
+			 </c:forEach>
+
+
 				
-		<li class="item4"><a href="#">Shoes</a>
-			<ul class="cute">
-				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
-				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
-				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
-			</ul>
-		</li>
+
 	</ul>
 					</div>
 				<!--initiate accordion-->
@@ -185,110 +162,25 @@ amet consectetuer </a></h6>
 				</div>
 				<div class="col-md-9 product1">
 				<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi3.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-						<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>						
-					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi1.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi4.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="clearfix"> </div>
-				</div>
-					<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi5.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
-</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi1.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					</div>
-					<div class="clearfix"> </div>
-				</div>
-					<div class=" bottom-product">
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi3.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-					<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
+					<c:forEach items="${list}" var="list">
 
+
+					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
+						<div class="product-at ">
+							<a href="<c:url value="/Index/findVideoById/${list.vid}"/>"><img class="img-responsive" src="images/pi3.jpg" alt="">
+							<div class="pro-grid">
+										<span class="buy-in">立即动手</span>
+							</div>
+						</a>	
+						</div>
+						<p class="tun">${list.video_name}</p>
+						<a href="<c:url value="/Index/findVideoById/${list.vid}"/>" class="item_add"><p class="number item_price"><i> </i>${list.money}</p></a>
 					</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi4.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
-</div>
-					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.jsp"><img class="img-responsive" src="images/pi5.jpg" alt="">
-							<div class="pro-grid">
-										<span class="buy-in">Buy Now</span>
-							</div>
-						</a>	
-						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-<a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>					
-</div>
+					</c:forEach>
 					<div class="clearfix"> </div>
 				</div>
+
+
 				
 				</div>
 		<div class="clearfix"> </div>

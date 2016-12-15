@@ -1,6 +1,5 @@
 package cn.yuhao.experiment.controller;
 
-import cn.yuhao.experiment.pojo.SysUser;
 import cn.yuhao.experiment.pojo.User;
 import cn.yuhao.experiment.service.SysUserService;
 import com.github.pagehelper.PageHelper;
@@ -25,19 +24,19 @@ public class AdminController {
 	@Resource
 	private SysUserService sysUserService;
 	
-	@RequestMapping("/showUserToJspById/{userId}")
+/*	@RequestMapping("/showUserToJspById/{userId}")
 	public String showUser(Model model,@PathVariable("userId") Long userId){
 		SysUser user = this.sysUserService.getById(userId);
 		model.addAttribute("user", user);
 		return "showUser";
-	}
+	}*/
 	
-	@RequestMapping("/showUserToJSONById/{userId}")
+	/*@RequestMapping("/showUserToJSONById/{userId}")
 	@ResponseBody
 	public SysUser showUser(@PathVariable("userId") Long userId){
 		SysUser user = sysUserService.getById(userId);
 		return user;
-	}
+	}*/
 	
 	
 	@RequestMapping("/test-logback")

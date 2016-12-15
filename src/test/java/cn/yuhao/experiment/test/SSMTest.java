@@ -3,6 +3,7 @@ package cn.yuhao.experiment.test;
 import cn.yuhao.experiment.pojo.*;
 import cn.yuhao.experiment.service.IndexService;
 import cn.yuhao.experiment.service.SysUserService;
+import cn.yuhao.experiment.utils.MailUtils;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,11 +23,20 @@ public class SSMTest {
 	private SysUserService sysUserService;
 	@Resource
 	private IndexService indexService;
+
+	@Test
+	public void test3(){
+		Map map=indexService.findAcategotyAll("1");
+		System.out.println(JSON.toJSONString(map));
+	}
+
 	@Test
 	public void test2(){
-		Map maps=indexService.findVideoById("1371");
+		Map maps=indexService.findVideoById("1111");
 		String video=JSON.toJSONString(maps);
 		System.out.println("---"+video);
+
+//		MailUtils.sendMail("2990654397@qq.com","来自汇实验--实验学习平台的激活邮件",video);
 	}
 
 	@Test

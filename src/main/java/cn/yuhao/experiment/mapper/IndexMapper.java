@@ -10,7 +10,7 @@ public interface IndexMapper {
 
      List<Map> findAcategory(Acategory acategory);
 
-     List<Bcategory> findBcategoryByAid(Bcategory bcategory);
+     List<Map> findBcategoryByAid(Bcategory bcategory);
 
      List<Map> findVideo(Video video);
 

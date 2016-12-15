@@ -4,7 +4,7 @@ import cn.yuhao.experiment.mapper.*;
 import cn.yuhao.experiment.pojo.*;
 import cn.yuhao.experiment.service.IndexService;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,9 +40,11 @@ public class IndexServiceImpl implements IndexService {
     }
 
     @Override
-    public List<Bcategory> findBcategoryByAid(Bcategory bcategory) {
+    public List<Map> findBcategoryByAid(Bcategory bcategory) {
+
         return indexMapper.findBcategoryByAid(bcategory);
     }
+
 
     /**
      * 通过video传入参数，可以查找相应的实验，传入的参数最好全面一些
@@ -96,6 +98,29 @@ public class IndexServiceImpl implements IndexService {
         maps.put("discuss", discussMap);
 
         return maps;
+    }
+
+    @Override
+    public Map<String,String> findAcategotyAll(String aid) {
+        Acategory acategory=acategoryMapper.selectByPrimaryKey(aid);
+        Map map= (Map) JSON.toJSON(acategory);
+        Bcategory bcategory=new Bcategory();
+        bcategory.setAid(aid);
+        List<Map> bcategoryList=indexMapper.findBcategoryByAid(bcategory);
+        for (int i=0;i<bcategoryList.size();i++){
+            Ccategory ccategory=new Ccategory();
+            ccategory.setBid(bcategoryList.get(i).get("bid").toString());
+            List<Map> ccategorys=indexMapper.findCcategoryByBid(ccategory);
+            bcategoryList.get(i).put("ccategorys",ccategorys);
+        }
+        JSONArray bcategorys=JSON.parseArray(JSON.toJSONString(bcategoryList));
+        map.put("bcategorys",bcategorys);
+        return map;
+    }
+
+    @Override
+    public Bcategory selectByPrimaryKey(String bid) {
+        return bcategoryMapper.selectByPrimaryKey(bid);
     }
 
 
