@@ -31,8 +31,9 @@
     <mvc:resources mapping="/admin/**" location="/admin/"/>
     <!--<mvc:resources mapping="/view/**" location="/view/"/>-->
     <mvc:resources mapping="/user/**" location="/user/"/>
-
-
+    <mvc:resources mapping="/video/**" location="/WEB-INF/statics/upload/video/"/>
+    <mvc:resources mapping="/image/**" location="/WEB-INF/statics/upload/image/"/>
+    <mvc:resources mapping="/file/**" location="/WEB-INF/statics/upload/file/"/>
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
     <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

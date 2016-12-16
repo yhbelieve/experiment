@@ -4,19 +4,19 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
             + request.getServerName() + ":" + request.getServerPort()
-            + path + "/view";
+            + path + "/";
     request.setAttribute("basePath", basePath);
 %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
-    <link href="${basePath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${basePath}view/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="${basePath}/js/jquery.min.js"></script>
+    <script src="${basePath}view/js/jquery.min.js"></script>
     <!-- Custom Theme files -->
     <!--theme-style-->
-    <link href="${basePath}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${basePath}view/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -29,13 +29,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         window.scrollTo(0, 1);
     } </script>
     <!-- start menu -->
-    <link href="${basePath}/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="${basePath}/js/memenu.js"></script>
+    <link href="${basePath}view/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="${basePath}view/js/memenu.js"></script>
     <script>$(document).ready(function () {
         $(".memenu").memenu();
     });</script>
-    <script src="${basePath}/js/simpleCart.min.js"></script>
-
+    <script src="${basePath}view/js/simpleCart.min.js"></script>
+        <script type="text/javascript">
+            var aaa="${basePath}view";
+//            alert(aaa);
+        </script>
 </head>
 <body>
 <!--header-->
@@ -43,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="banner">
     <div class="container">
-        <script src="js/responsiveslides.min.js"></script>
+        <script src="${basePath}view/js/responsiveslides.min.js"></script>
         <script>
             $(function () {
                 $("#slider").responsiveSlides({
@@ -107,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="col-md-4 grid-top">
                         <a href="<c:url value="/Index/findVideoById/${likeList.vid}"/>"
-                           class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi.jpg"
+                           class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="${basePath}${likeList.image}"
                                                                              alt="">
                             <div class="b-wrapper">
                                 <h3 class="b-animate b-from-left    b-delay03 ">
@@ -144,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="col-md-4 grid-top">
                         <a href="<c:url value="/Index/findVideoById/${downloadList.vid}"/>"
-                           class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi.jpg"
+                           class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="${basePath}${downloadList.image}"
                                                                              alt="">
                             <div class="b-wrapper">
                                 <h3 class="b-animate b-from-left    b-delay03 ">
@@ -179,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div class="col-md-4 grid-top">
                         <a href="<c:url value="/Index/findVideoById/${clickList.vid}"/>"
-                           class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="images/pi.jpg"
+                           class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="${basePath}${clickList.image}"
                                                                              alt="">
                             <div class="b-wrapper">
                                 <h3 class="b-animate b-from-left    b-delay03 ">

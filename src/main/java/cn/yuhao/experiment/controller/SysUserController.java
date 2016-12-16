@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -22,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/Sysuser")
+@RequestMapping("/User")
 public class SysUserController {
 
 
@@ -37,7 +38,7 @@ public class SysUserController {
      * @param uuid
      * @return
      */
-    @RequestMapping("active/{uuid}")
+    @RequestMapping(value = "active/{uuid}",method = RequestMethod.GET)
     public String active(Model model, @PathVariable("uuid") String uuid) {
         User user = sysUserService.selectByPrimaryKey(uuid);
         if (user != null) {
@@ -63,7 +64,7 @@ public class SysUserController {
      */
 
 
-    @RequestMapping("regist")
+    @RequestMapping(value = "regist",method = RequestMethod.POST)
     public String regist(Model model, User user) {
         user.setRegistTime(DateUtils.getNowTime());
         user.setUid(Uuid.getUuid());
@@ -81,7 +82,7 @@ public class SysUserController {
      * @param user
      * @return
      */
-    @RequestMapping("login")
+    @RequestMapping(value = "login",method = RequestMethod.POST)
     public String login(Model model, User user, HttpServletRequest request) {
         List<Map> listUser = sysUserService.findUser(user);
         if (listUser.get(0) != null) {
@@ -121,10 +122,10 @@ public class SysUserController {
      * @param session
      * @return
      */
-    @RequestMapping("logout")
+    @RequestMapping(value = "logout",method = RequestMethod.GET)
     public String logout(HttpSession session) {
        session.invalidate();
-        return "";
+        return "redirect:Index/showIndex.action";
     }
 
 

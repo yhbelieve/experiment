@@ -4,19 +4,19 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
             + request.getServerName() + ":" + request.getServerPort()
-            + path + "/view";
+            + path + "/";
     request.setAttribute("basePath", basePath);
 %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Signle</title>
-    <link href="${basePath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${basePath}view/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="${basePath}/js/jquery.min.js"></script>
+    <script src="${basePath}view/js/jquery.min.js"></script>
     <!-- Custom Theme files -->
     <!--theme-style-->
-    <link href="${basePath}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${basePath}view/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -30,15 +30,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     } </script>
 
     <!-- start menu -->
-    <link href="${basePath}/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
-    <script type="text/javascript" src="${basePath}/js/memenu.js"></script>
+    <link href="${basePath}view/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="${basePath}view/js/memenu.js"></script>
     <script>$(document).ready(function () {
         $(".memenu").memenu();
     });</script>
 
 
-    <script src="${basePath}/js/main.js"></script>
-    <script src="${basePath}/js/simpleCart.min.js"></script>
+    <script src="${basePath}view/js/main.js"></script>
+    <script src="${basePath}view/js/simpleCart.min.js"></script>
 </head>
 <body>
 <!--header-->
