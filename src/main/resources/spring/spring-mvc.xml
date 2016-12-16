@@ -26,6 +26,8 @@
     比如我们在 JSP 中引入一个 js 文件：src="${webRoot}/js/jQuery-core/jquery-1.6.1.min.js
     -->
     <mvc:resources mapping="/view/**" location="/WEB-INF/statics/view/"/>
+  <!--  <mvc:resources mapping="/user/**" location="/WEB-INF/statics/user/"/>
+    <mvc:resources mapping="/admin/**" location="/WEB-INF/statics/admin/"/>-->
     <mvc:resources mapping="/admin/**" location="/admin/"/>
     <!--<mvc:resources mapping="/view/**" location="/view/"/>-->
     <mvc:resources mapping="/user/**" location="/user/"/>

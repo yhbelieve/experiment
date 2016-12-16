@@ -73,6 +73,7 @@ public class IndexController {
 		System.out.println(likeList);
 		System.out.println(downloadList);
 		System.out.println(clickList);
+//		System.out.println("over");
 		return "view/index";
 	}
 

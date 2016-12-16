@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="footer">
-    <div class="container">
+    <%--<div class="container">
         <div class="footer-top-at">
 
             <div class="col-md-4 amet-sed">
@@ -41,8 +41,8 @@
             </div>
             <div class="clearfix"> </div>
         </div>
-    </div>
+    </div>--%>
     <div class="footer-class">
-        <p >Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        <p >版权所有 &copy; 2016~2017  -  汇实验--在线实验学习平台    作者：余豪</p>
     </div>
 </div>

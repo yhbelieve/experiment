@@ -16,14 +16,21 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/Admin")
 public class AdminController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(AdminController.class);
 	
 	@Resource
 	private SysUserService sysUserService;
-	
+
+	@RequestMapping("showIndex")
+	public String showIndex(){
+		System.out.println("后台首页");
+		return "admin/login";
+	}
+
+
 /*	@RequestMapping("/showUserToJspById/{userId}")
 	public String showUser(Model model,@PathVariable("userId") Long userId){
 		SysUser user = this.sysUserService.getById(userId);
