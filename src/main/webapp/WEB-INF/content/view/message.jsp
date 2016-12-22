@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>注册</title>
+    <title>消息提示</title>
     <link href="${basePath}view/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="${basePath}view/js/jquery.min.js"></script>
@@ -36,16 +36,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $(".memenu").memenu();
     });</script>
     <script src="${basePath}view/js/simpleCart.min.js"></script>
-
-    <script src="${basePath}validation/jquery.metadata.js"> </script>
-    <script src="${basePath}validation/jquery.validate.min.js"> </script>
-    <script src="${basePath}validation/messages_cn.js"> </script>
-    <script>
-        $(document).ready(function() {
-            $("#register").validate();
-
-        });
-    </script>
 </head>
 <body>
 <!--header-->
@@ -55,39 +45,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class=" container">
     <div class=" register">
-        <h1>注册汇实验账号</h1>
-        <form id="register" action="/User/regist" method="post">
-            <div class="col-md-6 register-top-grid">
-
-                <div>
-                    <span>用户名</span>
-                    <input type="text" id="username" name="username" value="${user.username}" required minlength="3">
-                </div>
-                <div>
-                    <span>邮箱</span>
-                    <input type="text" id="email" name="email" value="${user.email}" required email="true">
-                </div>
-
-                <a class="news-letter" href="${basePath}view/#">
-                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>阅读并接受《汇实验用户协议》</label>
-                </a>
-
-            </div>
-            <div class="col-md-6 register-bottom-grid">
-
-                <div>
-                    <span>密码</span>
-                    <input type="password" id="password" name="password" value="${user.password}" minlength="6" required >
-                </div>
-                <div>
-                    <span>确认密码</span>
-                    <input type="password" id="conformPassword" minlength="6" required class="{equalTo:'#password'}">
-                </div>
-                <input type="submit" value="注册">
-
-            </div>
-            <div class="clearfix"></div>
-        </form>
+        <h1>消息提醒</h1>
+        <br>
+        <h1>${msg}</h1>
     </div>
 </div>
 <!--//content-->

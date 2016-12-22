@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signle</title>
+    <title>汇实验</title>
     <link href="${basePath}view/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="${basePath}view/js/jquery.min.js"></script>

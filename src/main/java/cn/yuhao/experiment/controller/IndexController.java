@@ -33,6 +33,25 @@ public class IndexController {
     private SysUserService sysUserService;
 
     /**
+     * 注册
+     * @return
+     */
+    @RequestMapping("register")
+    public String register(){
+        return "view/register";
+    }
+
+    /**
+     * 登录
+     * @return
+     */
+    @RequestMapping(value = "login",method = RequestMethod.GET)
+    public String login(){
+        System.out.println("login");
+        return "view/login";
+    }
+
+    /**
      * 显示首页内容
      *
      * @param model

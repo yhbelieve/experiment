@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.yuhao.experiment.mapper.SysAdminMapper" >
+<mapper namespace="cn.yuhao.experiment.mapper.SysAdminMapper">
+    <select id="findAllUser" resultType="map">
+    SELECT * FROM user
+  </select>
+    <select id="findAllAcategory" resultType="map">
+        SELECT * FROM acategory
+    </select>
+    <select id="findAllBcategory" resultType="map">
+        SELECT * FROM bcategory
+    </select>
+    <select id="findAllCcategory" resultType="map">
+        SELECT * FROM ccategory
+    </select>
+    <select id="findAllWord" resultType="map">
+        SELECT * FROM word
+    </select>
+    <select id="findAllReply" resultType="map">
+        SELECT * FROM reply
+    </select>
+    <select id="findAllExam" resultType="map">
+        SELECT * FROM exam
+    </select>
+    <select id="findAllFile" resultType="map">
+        SELECT * FROM file
+    </select>
+    <select id="findAllBlog" resultType="map">
+        SELECT * FROM blog
+    </select>
+
+    <select id="findAdmin" resultType="cn.yuhao.experiment.pojo.Admin">
+        select * from admin where name=#{name} and password=#{password}
+    </select>
 
 </mapper>

@@ -21,4 +21,24 @@
       </if>
 
   </select>
+  <select id="findCollectVideo" resultType="map">
+    SELECT * FROM collect, video WHERE video.`vid`=collect.`vid` AND collect.uid=#{uid}
+  </select>
+<select id="findBlog" resultMap="map">
+  SELECT * FROM blog WHERE 1=1
+  <if test="uid!=null">
+    and uid=#{uid}
+  </if>
+  <if test="isShow!=null">
+    and is_show=#{isShow}
+  </if>
+  <if test="isActive!=null">
+    and is_active=#{isActive}
+  </if>
+  <if test="id!=null">
+    and id=#{id}
+  </if>
+</select>
+
+
 </mapper>

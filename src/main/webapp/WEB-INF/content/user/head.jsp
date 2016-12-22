@@ -25,12 +25,13 @@
         <!-- user dropdown ends -->
 
         <!-- theme selector starts -->
-        <div class="btn-group pull-right theme-container animated tada">
+        <div class="btn-group pull-right theme-container animated tada" id="items_div">
             <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                 <i class="glyphicon glyphicon-tint"></i><span
                     class="hidden-sm hidden-xs"> Change Theme / Skin</span>
                 <span class="caret"></span>
             </button>
+
             <ul class="dropdown-menu" id="themes">
                 <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
                 <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>

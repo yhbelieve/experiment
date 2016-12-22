@@ -62,6 +62,9 @@ AND ccategory.`bid`=#{bid}
         <if test="videoName!=null">
             AND video.`video_name`=#{videoName}
         </if>
+        <if test="uid!=null">
+            AND video.`uid`=#{uid}
+        </if>
     </select>
     <select id="findComment" resultType="map">
         SELECT * from discuss where 1=1

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="header">
@@ -11,11 +11,22 @@
                 </form>
             </div>
             <div class="header-left">
+                <c:if test="${sessionScope.user !=null}">
+                    <ul>
+                        <li ><a href="javascript:void(0)">尊敬的用户：${sessionScope.user.username }</a></li>
+                        <li><a  href="<c:url value="/Index/register"/>"  >我的个人主页</a></li>
+                        <li><a  href="<c:url value="/User/logout"/>"  >退出登录</a></li>
+                    </ul>
+                </c:if>
+
+                <c:if test="${sessionScope.user ==null}">
+
                 <ul>
-                    <li ><a href="login.jsp"  >登录</a></li>
-                    <li><a  href="register.jsp"  >注册</a></li>
+                    <li ><a href="<c:url value="/Index/login"/>"  >登录</a></li>
+                    <li><a  href="<c:url value="/Index/register"/>"  >注册</a></li>
 
                 </ul>
+                </c:if>
                 <div class="cart box_1">
                     <a href="checkout.jsp">
                         <h3> <div class="total">

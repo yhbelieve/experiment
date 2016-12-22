@@ -4,7 +4,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
             + request.getServerName() + ":" + request.getServerPort()
-            + path + "/user/";
+            + path + "/";
     request.setAttribute("basePath",basePath);
 %>
 
@@ -19,33 +19,31 @@
     <meta name="author" content="Muhammad Usman">
 
     <!-- The styles -->
-    <link id="bs-css" href="${basePath}/css/bootstrap-cerulean.min.css" rel="stylesheet">
+    <link id="bs-css" href="${basePath}user/css/bootstrap-cerulean.min.css" rel="stylesheet">
 
-    <link href="${basePath}/css/charisma-app.css" rel="stylesheet">
-    <link href='${basePath}/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
-    <link href='${basePath}/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
-    <link href='${basePath}/bower_components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='${basePath}/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
-    <link href='${basePath}/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <link href='${basePath}/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
-    <link href='${basePath}/css/jquery.noty.css' rel='stylesheet'>
-    <link href='${basePath}/css/noty_theme_default.css' rel='stylesheet'>
-    <link href='${basePath}/css/elfinder.min.css' rel='stylesheet'>
-    <link href='${basePath}/css/elfinder.theme.css' rel='stylesheet'>
-    <link href='${basePath}/css/jquery.iphone.toggle.css' rel='stylesheet'>
-    <link href='${basePath}/css/uploadify.css' rel='stylesheet'>
-    <link href='${basePath}/css/animate.min.css' rel='stylesheet'>
+    <link href="${basePath}user/css/charisma-app.css" rel="stylesheet">
+    <link href='${basePath}user/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='${basePath}user/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='${basePath}user/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='${basePath}user/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='${basePath}user/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='${basePath}user/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='${basePath}user/css/jquery.noty.css' rel='stylesheet'>
+    <link href='${basePath}user/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='${basePath}user/css/elfinder.min.css' rel='stylesheet'>
+    <link href='${basePath}user/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='${basePath}user/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='${basePath}user/css/uploadify.css' rel='stylesheet'>
+    <link href='${basePath}user/css/animate.min.css' rel='stylesheet'>
 
     <!-- jQuery -->
-    <script src="${basePath}/bower_components/jquery/jquery.min.js"></script>
+    <script src="${basePath}user/bower_components/jquery/jquery.min.js"></script>
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+
 
     <!-- The fav icon -->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="${basePath}user/img/favicon.ico">
 
 </head>
 
@@ -68,16 +66,16 @@
             <div>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="${basePath}user/#">Home</a>
                     </li>
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="${basePath}user/#">Dashboard</a>
                     </li>
                 </ul>
             </div>
             <div class=" row">
                 <div class="col-md-3 col-sm-3 col-xs-6">
-                    <a data-toggle="tooltip" title="6 new members." class="well top-block" href="#">
+                    <a data-toggle="tooltip" title="6 new members." class="well top-block" href="${basePath}user/#">
                         <i class="glyphicon glyphicon-user blue"></i>
 
                         <div>Total Members</div>
@@ -87,7 +85,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-3 col-xs-6">
-                    <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="#">
+                    <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="${basePath}user/#">
                         <i class="glyphicon glyphicon-star green"></i>
 
                         <div>Pro Members</div>
@@ -97,7 +95,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-3 col-xs-6">
-                    <a data-toggle="tooltip" title="$34 new sales." class="well top-block" href="#">
+                    <a data-toggle="tooltip" title="$34 new sales." class="well top-block" href="${basePath}user/#">
                         <i class="glyphicon glyphicon-shopping-cart yellow"></i>
 
                         <div>Sales</div>
@@ -107,7 +105,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-3 col-xs-6">
-                    <a data-toggle="tooltip" title="12 new messages." class="well top-block" href="#">
+                    <a data-toggle="tooltip" title="12 new messages." class="well top-block" href="${basePath}user/#">
                         <i class="glyphicon glyphicon-envelope red"></i>
 
                         <div>Messages</div>
@@ -124,11 +122,11 @@
                             <h2><i class="glyphicon glyphicon-info-sign"></i> Introduction</h2>
 
                             <div class="box-icon">
-                                <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-setting btn-round btn-default"><i
                                         class="glyphicon glyphicon-cog"></i></a>
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-minimize btn-round btn-default"><i
                                         class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-close btn-round btn-default"><i
                                         class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </div>
@@ -148,11 +146,11 @@
                                     followers.</b></p>
 
                                 <p class="center-block download-buttons">
-                                    <a href="http://usman.it/free-responsive-admin-template/"
+                                    <a href="${basePath}user/http://usman.it/free-responsive-admin-template/"
                                        class="btn btn-primary btn-lg"><i
                                             class="glyphicon glyphicon-chevron-left glyphicon-white"></i> Back to
                                         article</a>
-                                    <a href="http://usman.it/free-responsive-admin-template/"
+                                    <a href="${basePath}user/http://usman.it/free-responsive-admin-template/"
                                        class="btn btn-default btn-lg"><i
                                             class="glyphicon glyphicon-download-alt"></i> Download Page</a>
                                 </p>
@@ -171,19 +169,19 @@
                             <h2><i class="glyphicon glyphicon-th"></i> Tabs</h2>
 
                             <div class="box-icon">
-                                <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-setting btn-round btn-default"><i
                                         class="glyphicon glyphicon-cog"></i></a>
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-minimize btn-round btn-default"><i
                                         class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-close btn-round btn-default"><i
                                         class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </div>
                         <div class="box-content">
                             <ul class="nav nav-tabs" id="myTab">
-                                <li class="active"><a href="#info">Info</a></li>
-                                <li><a href="#custom">Custom</a></li>
-                                <li><a href="#messages">Messages</a></li>
+                                <li class="active"><a href="${basePath}user/#info">Info</a></li>
+                                <li><a href="${basePath}user/#custom">Custom</a></li>
+                                <li><a href="${basePath}user/#messages">Messages</a></li>
                             </ul>
 
                             <div id="myTabContent" class="tab-content">
@@ -196,10 +194,10 @@
                                         and mobile phones.</p>
 
                                     <p>Check how it looks on different devices:</p>
-                                    <a href="http://www.responsinator.com/?url=usman.it%2Fthemes%2Fcharisma"
+                                    <a href="${basePath}user/http://www.responsinator.com/?url=usman.it%2Fthemes%2Fcharisma"
                                        target="_blank"><strong>Preview on iPhone size.</strong></a>
                                     <br>
-                                    <a href="http://www.responsinator.com/?url=usman.it%2Fthemes%2Fcharisma"
+                                    <a href="${basePath}user/http://www.responsinator.com/?url=usman.it%2Fthemes%2Fcharisma"
                                        target="_blank"><strong>Preview on iPad size.</strong></a>
                                 </div>
                                 <div class="tab-pane" id="custom">
@@ -230,9 +228,9 @@
                             <h2><i class="glyphicon glyphicon-user"></i> Member Activity</h2>
 
                             <div class="box-icon">
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-minimize btn-round btn-default"><i
                                         class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-close btn-round btn-default"><i
                                         class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </div>
@@ -240,39 +238,39 @@
                             <div class="box-content">
                                 <ul class="dashboard-list">
                                     <li>
-                                        <a href="#">
+                                        <a href="${basePath}user/#">
                                             <img class="dashboard-avatar" alt="Usman"
-                                                 src="http://www.gravatar.com/avatar/f0ea51fa1e4fae92608d8affee12f67b.png?s=50"></a>
-                                        <strong>Name:</strong> <a href="#">Usman
+                                                 src="${basePath}user/http://www.gravatar.com/avatar/f0ea51fa1e4fae92608d8affee12f67b.png?s=50"></a>
+                                        <strong>Name:</strong> <a href="${basePath}user/#">Usman
                                     </a><br>
                                         <strong>Since:</strong> 17/05/2014<br>
                                         <strong>Status:</strong> <span class="label-success label label-default">Approved</span>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="${basePath}user/#">
                                             <img class="dashboard-avatar" alt="Sheikh Heera"
-                                                 src="http://www.gravatar.com/avatar/3232415a0380253cfffe19163d04acab.png?s=50"></a>
-                                        <strong>Name:</strong> <a href="#">Sheikh Heera
+                                                 src="${basePath}user/http://www.gravatar.com/avatar/3232415a0380253cfffe19163d04acab.png?s=50"></a>
+                                        <strong>Name:</strong> <a href="${basePath}user/#">Sheikh Heera
                                     </a><br>
                                         <strong>Since:</strong> 17/05/2014<br>
                                         <strong>Status:</strong> <span
                                             class="label-warning label label-default">Pending</span>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="${basePath}user/#">
                                             <img class="dashboard-avatar" alt="Abdullah"
-                                                 src="http://www.gravatar.com/avatar/46056f772bde7c536e2086004e300a04.png?s=50"></a>
-                                        <strong>Name:</strong> <a href="#">Abdullah
+                                                 src="${basePath}user/http://www.gravatar.com/avatar/46056f772bde7c536e2086004e300a04.png?s=50"></a>
+                                        <strong>Name:</strong> <a href="${basePath}user/#">Abdullah
                                     </a><br>
                                         <strong>Since:</strong> 25/05/2014<br>
                                         <strong>Status:</strong> <span
                                             class="label-default label label-danger">Banned</span>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="${basePath}user/#">
                                             <img class="dashboard-avatar" alt="Sana Amrin"
-                                                 src="http://www.gravatar.com/avatar/hash"></a>
-                                        <strong>Name:</strong> <a href="#">Sana Amrin</a><br>
+                                                 src="${basePath}user/http://www.gravatar.com/avatar/hash"></a>
+                                        <strong>Name:</strong> <a href="${basePath}user/#">Sana Amrin</a><br>
                                         <strong>Since:</strong> 17/05/2014<br>
                                         <strong>Status:</strong> <span class="label label-info">Updates</span>
                                     </li>
@@ -289,9 +287,9 @@
                             <h2><i class="glyphicon glyphicon-list-alt"></i> Keep in touch</h2>
 
                             <div class="box-icon">
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-minimize btn-round btn-default"><i
                                         class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-close btn-round btn-default"><i
                                         class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </div>
@@ -308,11 +306,11 @@
                             <h2><i class="glyphicon glyphicon-list"></i> Buttons</h2>
 
                             <div class="box-icon">
-                                <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-setting btn-round btn-default"><i
                                         class="glyphicon glyphicon-cog"></i></a>
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-minimize btn-round btn-default"><i
                                         class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-close btn-round btn-default"><i
                                         class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </div>
@@ -364,11 +362,11 @@
                             <h2><i class="glyphicon glyphicon-list"></i> Buttons</h2>
 
                             <div class="box-icon">
-                                <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-setting btn-round btn-default"><i
                                         class="glyphicon glyphicon-cog"></i></a>
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-minimize btn-round btn-default"><i
                                         class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-close btn-round btn-default"><i
                                         class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </div>
@@ -393,12 +391,12 @@
                                 <button class="btn dropdown-toggle btn-default btn-lg" data-toggle="dropdown"><span
                                         class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="glyphicon glyphicon-star"></i> Action</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-tag"></i> Another action</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-download-alt"></i> Something else here</a>
+                                    <li><a href="${basePath}user/#"><i class="glyphicon glyphicon-star"></i> Action</a></li>
+                                    <li><a href="${basePath}user/#"><i class="glyphicon glyphicon-tag"></i> Another action</a></li>
+                                    <li><a href="${basePath}user/#"><i class="glyphicon glyphicon-download-alt"></i> Something else here</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-tint"></i> Separated link</a></li>
+                                    <li><a href="${basePath}user/#"><i class="glyphicon glyphicon-tint"></i> Separated link</a></li>
                                 </ul>
                             </div>
 
@@ -413,67 +411,67 @@
                             <h2><i class="glyphicon glyphicon-list"></i> Weekly Stat</h2>
 
                             <div class="box-icon">
-                                <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-setting btn-round btn-default"><i
                                         class="glyphicon glyphicon-cog"></i></a>
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-minimize btn-round btn-default"><i
                                         class="glyphicon glyphicon-chevron-up"></i></a>
-                                <a href="#" class="btn btn-close btn-round btn-default"><i
+                                <a href="${basePath}user/#" class="btn btn-close btn-round btn-default"><i
                                         class="glyphicon glyphicon-remove"></i></a>
                             </div>
                         </div>
                         <div class="box-content">
                             <ul class="dashboard-list">
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-arrow-up"></i>
                                         <span class="green">92</span>
                                         New Comments
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-arrow-down"></i>
                                         <span class="red">15</span>
                                         New Registrations
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-minus"></i>
                                         <span class="blue">36</span>
                                         New Articles
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-comment"></i>
                                         <span class="yellow">45</span>
                                         User reviews
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-arrow-up"></i>
                                         <span class="green">112</span>
                                         New Comments
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-arrow-down"></i>
                                         <span class="red">31</span>
                                         New Registrations
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-minus"></i>
                                         <span class="blue">93</span>
                                         New Articles
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="${basePath}user/#">
                                         <i class="glyphicon glyphicon-comment"></i>
                                         <span class="yellow">254</span>
                                         User reviews
@@ -505,8 +503,8 @@
                     <p>Here settings can be configured...</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                    <a href="${basePath}user/#" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="${basePath}user/#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
                 </div>
             </div>
         </div>
@@ -518,38 +516,38 @@
 
 <!-- external javascript -->
 
-<script src="${basePath}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="${basePath}user/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- library for cookie management -->
-<script src="${basePath}/js/jquery.cookie.js"></script>
+<script src="${basePath}user/js/jquery.cookie.js"></script>
 <!-- calender plugin -->
-<script src='${basePath}/bower_components/moment/min/moment.min.js'></script>
+<script src='${basePath}user/bower_components/moment/min/moment.min.js'></script>
 <script src='${basePath}/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
 <!-- data table plugin -->
-<script src='${basePath}/js/jquery.dataTables.min.js'></script>
+<script src='${basePath}user/js/jquery.dataTables.min.js'></script>
 
 <!-- select or dropdown enhancer -->
-<script src="${basePath}/bower_components/chosen/chosen.jquery.min.js"></script>
+<script src="${basePath}user/bower_components/chosen/chosen.jquery.min.js"></script>
 <!-- plugin for gallery image view -->
-<script src="${basePath}/bower_components/colorbox/jquery.colorbox-min.js"></script>
+<script src="${basePath}user/bower_components/colorbox/jquery.colorbox-min.js"></script>
 <!-- notification plugin -->
-<script src="${basePath}/js/jquery.noty.js"></script>
+<script src="${basePath}user/js/jquery.noty.js"></script>
 <!-- library for making tables responsive -->
-<script src="${basePath}/bower_components/responsive-tables/responsive-tables.js"></script>
+<script src="${basePath}user/bower_components/responsive-tables/responsive-tables.js"></script>
 <!-- tour plugin -->
-<script src="${basePath}/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<script src="${basePath}user/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
 <!-- star rating plugin -->
-<script src="${basePath}/js/jquery.raty.min.js"></script>
+<script src="${basePath}user/js/jquery.raty.min.js"></script>
 <!-- for iOS style toggle switch -->
-<script src="${basePath}/js/jquery.iphone.toggle.js"></script>
+<script src="${basePath}user/js/jquery.iphone.toggle.js"></script>
 <!-- autogrowing textarea plugin -->
-<script src="${basePath}/js/jquery.autogrow-textarea.js"></script>
+<script src="${basePath}user/js/jquery.autogrow-textarea.js"></script>
 <!-- multiple file upload plugin -->
-<script src="${basePath}/js/jquery.uploadify-3.1.min.js"></script>
+<script src="${basePath}user/js/jquery.uploadify-3.1.min.js"></script>
 <!-- history.js for cross-browser state change on ajax -->
-<script src="${basePath}/js/jquery.history.js"></script>
+<script src="${basePath}user/js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
-<script src="${basePath}/js/charisma.js"></script>
+<script src="${basePath}user/js/charisma.js"></script>
 
 
 </body>
