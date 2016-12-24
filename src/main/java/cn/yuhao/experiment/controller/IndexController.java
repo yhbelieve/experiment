@@ -12,10 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -46,8 +43,9 @@ public class IndexController {
      * @return
      */
     @RequestMapping(value = "login",method = RequestMethod.GET)
-    public String login(){
+    public String login(@ModelAttribute("msg") String msg,Model model){
         System.out.println("login");
+        model.addAttribute("msg",msg);
         return "view/login";
     }
 
@@ -103,6 +101,8 @@ public class IndexController {
      */
     @RequestMapping(value = "findBcategoryVideo/{bid}",method = RequestMethod.GET)
     public String findBcategoryVideo(Model model, @PathVariable("bid") String bid) {
+        PageHelper.startPage(1,6);
+        PageHelper.orderBy("click_num desc");
         List<Map> maps = indexService.findVideoByBid(bid);
         JSONArray list = JSON.parseArray(JSON.toJSONString(maps));
         Bcategory bcategory = indexService.selectByPrimaryKey(bid);
@@ -170,8 +170,10 @@ public class IndexController {
     @RequestMapping(value = "findVideoById/{vid}",method = RequestMethod.GET)
     public String findVideoById(Model model, @PathVariable("vid") String vid) {
         Map maps = indexService.findVideoById(vid);
-        String video = JSON.toJSONString(maps);
-        model.addAttribute("list", video);
+//        String video = JSON.toJSONString(maps);
+//       JSONArray list=JSON.parseArray(video);
+        System.out.println(maps);
+        model.addAttribute("list", maps);
         return "view/single";
     }
 

@@ -194,100 +194,96 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <div class="col-md-9 product-price1">
-            <div class="col-md-5 single-top">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li data-thumb="images/si.jpg">
-                            <img src="images/si.jpg"/>
-                        </li>
-                        <li data-thumb="images/si1.jpg">
-                            <img src="images/si1.jpg"/>
-                        </li>
-                        <li data-thumb="images/si2.jpg">
-                            <img src="images/si2.jpg"/>
-                        </li>
-                        <li data-thumb="images/si.jpg">
-                            <img src="images/si.jpg"/>
-                        </li>
-                    </ul>
-                </div>
-                <!-- FlexSlider -->
-                <script defer src="js/jquery.flexslider.js"></script>
-                <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen"/>
 
-                <script>
-                    // Can also be used with $(document).ready()
-                    $(window).load(function () {
-                        $('.flexslider').flexslider({
-                            animation: "slide",
-                            controlNav: "thumbnails"
-                        });
-                    });
-                </script>
-            </div>
+
             <div class="col-md-7 single-top-in simpleCart_shelfItem">
                 <div class="single-para ">
-                    <h4>Lorem Ipsum</h4>
-                    <div class="star-on">
-                        <ul class="star-footer">
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                        </ul>
-                        <div class="review">
-                            <a href="#"> 1 customer review </a>
+                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                            width="800" height="405" id="FlashID" title="实验视频">
+                        <param name="movie" value="${basePath}/${list.videoFilename }"/>
+                        <param name="quality" value="high"/>
+                        <param name="wmode" value="opaque"/>
+                        <param name="swfversion" value="7.0.70.0"/>
+                        <!-- 此 param 标签提示使用 Flash Player 6.0 r65 和更高版本的用户下载最新版本的 Flash Player。如果您不想让用户看到该提示，请将其删除。 -->
+                        <param name="expressinstall" value="Scripts/expressInstall.swf"/>
+                        <!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 -->
+                        <!--[if !IE]>-->
+                        <object type="application/x-shockwave-flash"
+                                data="${basePath}/${list.videoFilename }" width="800" height="405">
+                            <!--<![endif]-->
+                            <param name="quality" value="high"/>
+                            <param name="wmode" value="opaque"/>
+                            <param name="swfversion" value="7.0.70.0"/>
+                            <param name="expressinstall" value="Scripts/expressInstall.swf"/>
+                            <!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 -->
+                            <div>
+                                <h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4>
+                                <p>
+                                    <a href="http://www.adobe.com/go/getflashplayer"><img
+                                            src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
+                                            alt="获取 Adobe Flash Player" width="112" height="33"/></a>
+                                </p>
+                            </div>
+                            <!--[if !IE]>-->
+                        </object>
+                        <!--<![endif]-->
+                    </object>
 
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
 
-                    <h5 class="item_price">$ 95.00</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                        diam nonummy nibh euismod tincidunt ut laoreet dolore
-                        magna aliquam erat </p>
-                    <div class="available">
-                        <ul>
-                            <li>Color
-                                <select>
-                                    <option>Silver</option>
-                                    <option>Black</option>
-                                    <option>Dark Black</option>
-                                    <option>Red</option>
-                                </select></li>
-                            <li class="size-in">Size<select>
-                                <option>Large</option>
-                                <option>Medium</option>
-                                <option>small</option>
-                                <option>Large</option>
-                                <option>small</option>
-                            </select></li>
-                            <div class="clearfix"></div>
-                        </ul>
-                    </div>
-                    <ul class="tag-men">
-                        <li><span>TAG</span>
-                            <span class="women1">: Women,</span></li>
-                        <li><span>SKU</span>
-                            <span class="women1">: CK09</span></li>
-                    </ul>
-                    <a href="#" class="add-cart item_add">ADD TO CART</a>
+                    <script type="text/javascript">
+                        swfobject.registerObject("FlashID");
+                    </script>
 
+                    <a id="downloadid" href="javascript:void(0)"
+                       class="add-cart item_add">${list.downloadNum}次下载</a>
+                    <a id="dianzan" href="javascript:void(0)" class="add-cart item_add">${list.likeNum }次收藏</a>
+                    <a href="javascript:void(0)" class="add-cart item_add">${list.clickNum}观看</a>
                 </div>
             </div>
+
             <div class="clearfix"></div>
             <!---->
-            <div class="cd-tabs">
+            <div class="cd-tabs1">
+                <nav>
+                    <ul class="cd-tabs-navigation">
+                        <div class="color">本实验演示视频均由网友自主上传，如果对您造成侵权，请联系管理员，我们将及时处理</div>
+                    </ul>
+                </nav>
+                <ul class="cd-tabs-content">
+                    <!-- 实验内容简介 -->
+                    <li data-content="television" class="selected">
+                        <a class="add-re" style="margin-top: 1em" href="javascript:void(0)">实验简介</a>
+                        <div class="comments-top-top" style="margin-top: 1em">
+                            <div class="top-comment-left">
+                                <img class="img-responsive" src="${basePath}/image/${list.user.image}"
+                                     alt="${list.user.username}">
+                                <a class="add-re" style="margin-top: 1em" href="#">${list.user.username}</a>
+                            </div>
+                            <div class="top-comment-right">
+                                <h6><a href="#">内容简介：</a></h6>
+                                <p>${list.comment}</p>
+
+                                <div style="width: 100%;margin-right: 0em;text-align: right">贡献时间:<a class="add-re"
+                                                                                                     href="#">${list.time}</a>
+                                </div>
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="cd-tabs" style="margin-top: 0em">
                 <nav>
                     <ul class="cd-tabs-navigation">
                         <li><a data-content="fashion" href="#0">在线检测 </a></li>
                         <li><a data-content="cinema" href="#0">实验文档下载</a></li>
                         <li><a data-content="television" href="#0" class="selected ">实验心得</a></li>
-
                     </ul>
                 </nav>
-                <ul class="cd-tabs-content">
+                <ul class="cd-tabs-content" id="cd-tabs-content">
                     <li data-content="fashion">
                         <div class="facts">
                             <p> There are many variations of passages of Lorem Ipsum available, but the majority have
@@ -310,76 +306,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li data-content="cinema">
                         <div class="facts1">
-                            <%--<c:forEach items="${list.files}" var="file">--%>
+                            <c:forEach items="${list.files}" var="file">
 
-                            <div class="color"><p>${file.name}</p>
-                                <span>Blue, Black, Red</span>
-                                <div class="clearfix"></div>
-                            </div>
+                                <div class="color"><p>${file.name}</p>
+                                    <span>${file.download_num}</span>
+                                    <div class="clearfix"></div>
+                                </div>
 
 
-                            <%--</c:forEach>--%>
+                            </c:forEach>
                         </div>
 
                     </li>
                     <li data-content="television" class="selected">
-                        <div class="comments-top-top">
-                            <div class="top-comment-left">
-                                <img class="img-responsive" src="images/co.png" alt="">
-                            </div>
-                            <div class="top-comment-right">
-                                <h6><a href="#">Hendri</a> - September 3, 2014</h6>
-                                <ul class="star-footer">
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                    <li><a href="#"><i> </i></a></li>
-                                </ul>
-                                <p>Wow nice!</p>
+                        <div style="margin-top: 1em"></div>
+                        <c:forEach items="${list.discuss}" var="discuss">
+                            <div class="comments-top-top" style="margin-top: 0em">
+                                <div class="top-comment-left">
+                                    <img class="img-responsive" src="${basePath}image/${discuss.user.image}" alt="">
+                                    <a class="add-re" style="margin-top: 1em" href="#">${discuss.user.username}</a>
+                                </div>
+                                <div class="top-comment-right">
+                                    <h6><a href="#">心得体会:</a></h6>
+                                    <p>${discuss.content}</p>
+                                    <br>
+                                    <div style="width: 100%;margin-right: 0em;text-align: right">${discuss.time} <a
+                                            class="add-re" style="margin-top: 1em;margin-right: 0em" href="#">回复</a>
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix"></div>
                             </div>
                             <div class="clearfix"></div>
-                            <a class="add-re" href="#">ADD REVIEW</a>
-                        </div>
-
+                        </c:forEach>
                     </li>
                     <div class="clearfix"></div>
                 </ul>
             </div>
-            <div class=" bottom-product">
-                <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-                    <div class="product-at ">
-                        <a href="#"><img class="img-responsive" src="images/pi3.jpg" alt="">
-                            <div class="pro-grid">
-                                <span class="buy-in">Buy Now</span>
-                            </div>
-                        </a>
-                    </div>
-                    <p class="tun">It is a long established fact that a reader</p>
-                    <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a>
-                </div>
-                <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-                    <div class="product-at ">
-                        <a href="#"><img class="img-responsive" src="images/pi1.jpg" alt="">
-                            <div class="pro-grid">
-                                <span class="buy-in">Buy Now</span>
-                            </div>
-                        </a>
-                    </div>
-                    <p class="tun">It is a long established fact that a reader</p>
-                    <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a></div>
-                <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-                    <div class="product-at ">
-                        <a href="#"><img class="img-responsive" src="images/pi4.jpg" alt="">
-                            <div class="pro-grid">
-                                <span class="buy-in">Buy Now</span>
-                            </div>
-                        </a>
-                    </div>
-                    <p class="tun">It is a long established fact that a reader</p>
-                    <a href="#" class="item_add"><p class="number item_price"><i> </i>$500.00</p></a></div>
-                <div class="clearfix"></div>
-            </div>
+
         </div>
 
         <div class="clearfix"></div>

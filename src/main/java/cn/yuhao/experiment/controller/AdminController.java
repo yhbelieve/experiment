@@ -26,39 +26,43 @@ public class AdminController {
     @Resource
     private SysUserService sysUserService;
 
-    @RequestMapping(value = "Login",method = RequestMethod.GET)
+    @RequestMapping(value = "Login", method = RequestMethod.GET)
     public String showIndex() {
         System.out.println("后台首页");
         return "admin/login";
     }
-    @RequestMapping(value = "Login",method = RequestMethod.POST)
-    public String showIndex(Admin admin,HttpServletRequest request,Model model) {
+
+    @RequestMapping(value = "Login", method = RequestMethod.POST)
+    public String showIndex(Admin admin, HttpServletRequest request, Model model) {
         admin.setPassword(DESUtils.getEncryptString(admin.getPassword()));
-       Admin admin1= adminService.findAdmin(admin);
-       if(admin1==null){
-          model.addAttribute("admin",admin);
-          model.addAttribute("msg","用户名或密码错误");
-           return "admin/login";
-       }else {
-           request.getSession().setAttribute("admin",admin1);
-           System.out.println("后台首页");
+        Admin admin1 = adminService.findAdmin(admin);
+        if (admin1 == null) {
+            model.addAttribute("admin", admin);
+            model.addAttribute("msg", "用户名或密码错误");
+            return "admin/login";
+        } else {
+            request.getSession().setAttribute("admin", admin1);
+            System.out.println("后台首页");
 //           登录成功，返回显示所有用户的action
-           return "admin/login";
-       }
+            return "admin/login";
+        }
 
     }
-    @RequestMapping(value = "Logout",method = RequestMethod.GET)
+
+    @RequestMapping(value = "Logout", method = RequestMethod.GET)
     public String Logout(HttpSession session) {
         session.invalidate();
         return "redirect:/Admin/Login";
     }
-    @RequestMapping(value = "editPassword",method = RequestMethod.POST)
-    public String editPassword(Admin admin,Model model, HttpServletRequest request) {
+
+    @RequestMapping(value = "editPassword", method = RequestMethod.POST)
+    public String editPassword(Admin admin, Model model, HttpServletRequest request) {
         adminService.updateByPrimaryKeySelective(admin);
-        request.getSession().setAttribute("admin",admin);
-       model.addAttribute("msg","密码修改成功");
+        request.getSession().setAttribute("admin", admin);
+        model.addAttribute("msg", "密码修改成功");
         return "admin/login";
     }
+
     /*
     * 一级分类的增删改查方法
     *
@@ -97,6 +101,7 @@ public class AdminController {
 
     /**
      * 二级分类增删改查
+     *
      * @param model
      * @return
      */
@@ -134,6 +139,7 @@ public class AdminController {
 
     /**
      * 三级分类的增删改查
+     *
      * @param model
      * @return
      */
@@ -145,8 +151,6 @@ public class AdminController {
         model.addAttribute("list", maps);
         return "admin/login";
     }
-
-
 
 
     @RequestMapping("selectByPrimaryKeyCcategory/{flag}/{aid}")
@@ -176,6 +180,7 @@ public class AdminController {
 
     /**
      * blog管理
+     *
      * @param model
      * @return
      */
@@ -208,7 +213,6 @@ public class AdminController {
     }
 
 
-
     @RequestMapping("findAllExam")
     public String findAllExam(Model model) {
         List<Map> maps = adminService.findAllExam();
@@ -239,6 +243,7 @@ public class AdminController {
 
     /**
      * 敏感词汇的增删改查
+     *
      * @param model
      * @return
      */
@@ -275,9 +280,6 @@ public class AdminController {
         model.addAttribute("msg", "添加成功");
         return "redirect:/Admin/findAllWord";
     }
-
-
-
 
 
 }

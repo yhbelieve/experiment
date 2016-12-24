@@ -6,6 +6,7 @@ import cn.yuhao.experiment.service.IndexService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -29,10 +30,6 @@ public class IndexServiceImpl implements IndexService {
     @Resource
     private UserMapper userMapper;
 
-    public List<Acategory> findAcategoryAll() {
-//        return acategoryMapper.selectByPrimaryKey();
-        return null;
-    }
 
     @Override
     public List<Map> findAcategory(Acategory acategory) {
@@ -81,8 +78,10 @@ public class IndexServiceImpl implements IndexService {
      * @return
      */
     @Override
+    @Transactional
     public Map findVideoById(String vid) {
         Video video = videoMapper.selectByPrimaryKey(vid);
+        video.setClickNum(video.getClickNum() + 1);
         Map maps = (Map) JSON.toJSON(video);
         User user = userMapper.selectByPrimaryKey(video.getUid());
         List<Map> files = indexMapper.findFile(vid);
@@ -96,25 +95,28 @@ public class IndexServiceImpl implements IndexService {
         maps.put("user", user);
         maps.put("files", files);
         maps.put("discuss", discussMap);
-
+        Video video1 = new Video();
+        video1.setVid(video.getVid());
+        video1.setClickNum(video.getClickNum());
+        videoMapper.updateByPrimaryKeySelective(video1);
         return maps;
     }
 
     @Override
-    public Map<String,String> findAcategotyAll(String aid) {
-        Acategory acategory=acategoryMapper.selectByPrimaryKey(aid);
-        Map map= (Map) JSON.toJSON(acategory);
-        Bcategory bcategory=new Bcategory();
+    public Map<String, String> findAcategotyAll(String aid) {
+        Acategory acategory = acategoryMapper.selectByPrimaryKey(aid);
+        Map map = (Map) JSON.toJSON(acategory);
+        Bcategory bcategory = new Bcategory();
         bcategory.setAid(aid);
-        List<Map> bcategoryList=indexMapper.findBcategoryByAid(bcategory);
-        for (int i=0;i<bcategoryList.size();i++){
-            Ccategory ccategory=new Ccategory();
+        List<Map> bcategoryList = indexMapper.findBcategoryByAid(bcategory);
+        for (int i = 0; i < bcategoryList.size(); i++) {
+            Ccategory ccategory = new Ccategory();
             ccategory.setBid(bcategoryList.get(i).get("bid").toString());
-            List<Map> ccategorys=indexMapper.findCcategoryByBid(ccategory);
-            bcategoryList.get(i).put("ccategorys",ccategorys);
+            List<Map> ccategorys = indexMapper.findCcategoryByBid(ccategory);
+            bcategoryList.get(i).put("ccategorys", ccategorys);
         }
-        JSONArray bcategorys=JSON.parseArray(JSON.toJSONString(bcategoryList));
-        map.put("bcategorys",bcategorys);
+        JSONArray bcategorys = JSON.parseArray(JSON.toJSONString(bcategoryList));
+        map.put("bcategorys", bcategorys);
         return map;
     }
 

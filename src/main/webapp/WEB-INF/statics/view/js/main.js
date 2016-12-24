@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 	var tabItems = $('.cd-tabs-navigation a'),
-		tabContentWrapper = $('.cd-tabs-content');
+		tabContentWrapper = $('#cd-tabs-content');
 
 	tabItems.on('click', function(event){
 		event.preventDefault();

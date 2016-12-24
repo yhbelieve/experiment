@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 
@@ -47,7 +48,7 @@ public class SysUserController {
      * @return
      */
     @RequestMapping(value = "active/{uuid}", method = RequestMethod.GET)
-    public String active(Model model, @PathVariable("uuid") String uuid) {
+    public String active(RedirectAttributes model, @PathVariable("uuid") String uuid) {
         User user = sysUserService.selectByPrimaryKey(uuid);
         if (user != null) {
             if (user.getIsActive()) {
@@ -334,13 +335,13 @@ public class SysUserController {
      * @return
      */
     @RequestMapping("updateUser")
-    public String updateUser(Model model,HttpServletRequest request, User user) {
+    public String updateUser(RedirectAttributes model, HttpServletRequest request, User user) {
         sysUserService.updateByPrimaryKeySelective(user);
        List list=sysUserService.findUser(user);
         request.getSession().setAttribute("user",list.get(0));
         model.addAttribute("msg", "个人信息修改成功！");
 //       返回自己个人信息的界面
-        return "user/table";
+        return "redirect:/user/table";
     }
 
     @RequestMapping("/test-logback")
