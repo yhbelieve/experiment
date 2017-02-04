@@ -28,18 +28,81 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     function hideURLbar() {
         window.scrollTo(0, 1);
     } </script>
-
+    <script type="text/javascript" charset="utf-8"
+            src="${basePath}ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="${basePath}ueditor/ueditor.all.min.js">
+    </script>
+    <script type="text/javascript" charset="utf-8"
+            src="${basePath}ueditor/lang/zh-cn/zh-cn.js"></script>
     <!-- start menu -->
     <link href="${basePath}view/css/memenu.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${basePath}view/css/charisma-app.css" rel="stylesheet">
     <script type="text/javascript" src="${basePath}view/js/memenu.js"></script>
-    <script>$(document).ready(function () {
-        $(".memenu").memenu();
-    });</script>
+    <script>
+        $(document).ready(function () {
+            var ue = UE.getEditor('container');
+
+            function submit() {
+                var dbnr = $('#content');
+                dbnr.val(UE.getEditor('container').getContent());
+                $('#dataform').submit();
+
+            }
+
+            $(".memenu").memenu();
+            ajaxFindExam(null);
+
+        });
+        function next() {
+            var aa = $("#nextid").attr("value");
+            ajaxFindExam(aa);
+        }
+        ;
+        function ajaxFindExam(next) {
+            $.ajax({
+                type: "GET",
+                url: '<c:url value="/Index/ajaxFindExam"/>',
+                async: false,
+                data: {
+                    "next": next,
+                    "vid":${list.vid}
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.msg == "") {
+                        $('#title').empty();   //清空resText里面的所有内容
+                        $('#title').html(data.content);
+                        $('#answerA').empty();   //清空resText里面的所有内容
+                        $('#answerA').html("A." + data.a);
+                        $('#answerB').empty();   //清空resText里面的所有内容
+                        $('#answerB').html("B." + data.b);
+                        $('#answerC').empty();   //清空resText里面的所有内容
+                        $('#answerC').html("C." + data.c);
+                        $('#answerD').empty();   //清空resText里面的所有内容
+                        $('#answerD').html("D." + data.d);
+                        $('#nextid').val(""); //清空resText里面的所有内容
+                        $('#nextid').val(data.next);
+                    } else {
+                        alert(data.msg);
+                    }
+//                    alert("success");
+                }
+            });
+        }
+
+
+    </script>
 
 
     <script src="${basePath}view/js/main.js"></script>
     <script src="${basePath}view/js/simpleCart.min.js"></script>
 </head>
+
+<script type="text/javascript">
+
+</script>
+
 <body>
 <!--header-->
 <%@include file="head.jsp" %>
@@ -56,39 +119,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3 class="cate">Categories</h3>
                 </div>
                 <ul class="menu">
-                    <li class="item1"><a href="#">Men </a>
+                    <li class="item1"><a href="javascript:void(0);">Men </a>
                         <ul class="cute">
-                            <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                            <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                            <li class="subitem3"><a href="#">Automatic Fails </a></li>
+                            <li class="subitem1"><a href="javascript:void(0);">Cute Kittens </a></li>
+                            <li class="subitem2"><a href="javascript:void(0);">Strange Stuff </a></li>
+                            <li class="subitem3"><a href="javascript:void(0);">Automatic Fails </a></li>
                         </ul>
                     </li>
-                    <li class="item2"><a href="#">Women </a>
+                    <li class="item2"><a href="javascript:void(0);">Women </a>
                         <ul class="cute">
-                            <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                            <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                            <li class="subitem3"><a href="#">Automatic Fails </a></li>
+                            <li class="subitem1"><a href="javascript:void(0);">Cute Kittens </a></li>
+                            <li class="subitem2"><a href="javascript:void(0);">Strange Stuff </a></li>
+                            <li class="subitem3"><a href="javascript:void(0);">Automatic Fails </a></li>
                         </ul>
                     </li>
-                    <li class="item3"><a href="#">Kids</a>
+                    <li class="item3"><a href="javascript:void(0);">Kids</a>
                         <ul class="cute">
-                            <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                            <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                            <li class="subitem3"><a href="#">Automatic Fails</a></li>
+                            <li class="subitem1"><a href="javascript:void(0);">Cute Kittens </a></li>
+                            <li class="subitem2"><a href="javascript:void(0);">Strange Stuff </a></li>
+                            <li class="subitem3"><a href="javascript:void(0);">Automatic Fails</a></li>
                         </ul>
                     </li>
-                    <li class="item4"><a href="#">Accesories</a>
+                    <li class="item4"><a href="javascript:void(0);">Accesories</a>
                         <ul class="cute">
-                            <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                            <li class="subitem2"><a href="#">Strange Stuff </a></li>
-                            <li class="subitem3"><a href="#">Automatic Fails</a></li>
+                            <li class="subitem1"><a href="javascript:void(0);">Cute Kittens </a></li>
+                            <li class="subitem2"><a href="javascript:void(0);">Strange Stuff </a></li>
+                            <li class="subitem3"><a href="javascript:void(0);">Automatic Fails</a></li>
                         </ul>
                     </li>
 
-                    <li class="item4"><a href="#">Shoes</a>
+                    <li class="item4"><a href="javascript:void(0);">Shoes</a>
                         <ul class="cute">
-                            <li class="subitem1"><a href="#">Cute Kittens </a></li>
-                            <li class="subitem2"><a href="#">Strange Stuff </a></li>
+                            <li class="subitem1"><a href="javascript:void(0);">Cute Kittens </a></li>
+                            <li class="subitem2"><a href="javascript:void(0);">Strange Stuff </a></li>
                             <li class="subitem3"><a href="product.html">Automatic Fails </a></li>
                         </ul>
                     </li>
@@ -119,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <div class="fit-top">
                     <h6 class="shop-top">Lorem Ipsum</h6>
-                    <a href="#" class="shop-now">SHOP NOW</a>
+                    <a href="javascript:void(0);" class="shop-now">SHOP NOW</a>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -129,18 +192,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="tags">
                     <ul>
-                        <li><a href="#">design</a></li>
-                        <li><a href="#">fashion</a></li>
-                        <li><a href="#">lorem</a></li>
-                        <li><a href="#">dress</a></li>
-                        <li><a href="#">fashion</a></li>
-                        <li><a href="#">dress</a></li>
-                        <li><a href="#">design</a></li>
-                        <li><a href="#">dress</a></li>
-                        <li><a href="#">design</a></li>
-                        <li><a href="#">fashion</a></li>
-                        <li><a href="#">lorem</a></li>
-                        <li><a href="#">dress</a></li>
+                        <li><a href="javascript:void(0);">design</a></li>
+                        <li><a href="javascript:void(0);">fashion</a></li>
+                        <li><a href="javascript:void(0);">lorem</a></li>
+                        <li><a href="javascript:void(0);">dress</a></li>
+                        <li><a href="javascript:void(0);">fashion</a></li>
+                        <li><a href="javascript:void(0);">dress</a></li>
+                        <li><a href="javascript:void(0);">design</a></li>
+                        <li><a href="javascript:void(0);">dress</a></li>
+                        <li><a href="javascript:void(0);">design</a></li>
+                        <li><a href="javascript:void(0);">fashion</a></li>
+                        <li><a href="javascript:void(0);">lorem</a></li>
+                        <li><a href="javascript:void(0);">dress</a></li>
 
                         <div class="clearfix"></div>
                     </ul>
@@ -155,11 +218,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="product-go">
                     <div class=" fashion-grid">
-                        <a href="#"><img class="img-responsive " src="images/p1.jpg" alt=""></a>
+                        <a href="javascript:void(0);"><img class="img-responsive " src="images/p1.jpg" alt=""></a>
 
                     </div>
                     <div class=" fashion-grid1">
-                        <h6 class="best2"><a href="#">Lorem ipsum dolor sit
+                        <h6 class="best2"><a href="javascript:void(0);">Lorem ipsum dolor sit
                             amet consectetuer </a></h6>
 
                         <span class=" price-in1"> $40.00</span>
@@ -169,11 +232,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="product-go">
                     <div class=" fashion-grid">
-                        <a href="#"><img class="img-responsive " src="images/p2.jpg" alt=""></a>
+                        <a href="javascript:void(0);"><img class="img-responsive " src="images/p2.jpg" alt=""></a>
 
                     </div>
                     <div class="fashion-grid1">
-                        <h6 class="best2"><a href="#">Lorem ipsum dolor sit
+                        <h6 class="best2"><a href="javascript:void(0);">Lorem ipsum dolor sit
                             amet consectetuer </a></h6>
 
                         <span class=" price-in1"> $40.00</span>
@@ -184,7 +247,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </div>
             <div class=" per1">
-                <a href="#"><img class="img-responsive" src="images/pro.jpg" alt="">
+                <a href="javascript:void(0);"><img class="img-responsive" src="images/pro.jpg" alt="">
                     <div class="six1">
                         <h4>DISCOUNT</h4>
                         <p>Up to</p>
@@ -198,7 +261,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="col-md-7 single-top-in simpleCart_shelfItem">
                 <div class="single-para ">
-                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                    <%--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
                             width="800" height="405" id="FlashID" title="实验视频">
                         <param name="movie" value="${basePath}/${list.videoFilename }"/>
                         <param name="quality" value="high"/>
@@ -227,12 +290,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <!--[if !IE]>-->
                         </object>
                         <!--<![endif]-->
-                    </object>
-
+                    </object>--%>
+                    <div id="myContent">
+                        <h1>请升级或安装最新的flash插件</h1>
+                        <p><a href="http://www.adobe.com/go/getflashplayer"><img
+                                src="http://www.5imoban.net/uploads/allimg/140107/10030641b-0.gif"
+                                alt="Get Adobe Flash player"/></a></p>
+                    </div>
+                    <script type="text/javascript" src="${basePath}view/js/swfobject.js"></script>
 
                     <script type="text/javascript">
-                        swfobject.registerObject("FlashID");
+
+                        swfobject.embedSWF("${basePath}/${list.videoFilename }", "myContent", "800", "405", "9.0.0", "expressInstall.swf");
+
                     </script>
+
+                    <%--<script type="text/javascript">
+                        swfobject.registerObject("FlashID");
+                    </script>--%>
 
                     <a id="downloadid" href="javascript:void(0)"
                        class="add-cart item_add">${list.downloadNum}次下载</a>
@@ -257,14 +332,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="top-comment-left">
                                 <img class="img-responsive" src="${basePath}/image/${list.user.image}"
                                      alt="${list.user.username}">
-                                <a class="add-re" style="margin-top: 1em" href="#">${list.user.username}</a>
+                                <a class="add-re" style="margin-top: 1em"
+                                   href="javascript:void(0);">${list.user.username}</a>
                             </div>
                             <div class="top-comment-right">
-                                <h6><a href="#">内容简介：</a></h6>
+                                <h6><a href="javascript:void(0);">内容简介：</a></h6>
                                 <p>${list.comment}</p>
 
                                 <div style="width: 100%;margin-right: 0em;text-align: right">贡献时间:<a class="add-re"
-                                                                                                     href="#">${list.time}</a>
+                                                                                                     href="javascript:void(0);">${list.time}</a>
                                 </div>
 
                             </div>
@@ -286,21 +362,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <ul class="cd-tabs-content" id="cd-tabs-content">
                     <li data-content="fashion">
                         <div class="facts">
-                            <p> There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing hidden in the middle of text. All the
-                                Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
-                                making this the first true generator on the Internet. It uses a dictionary of over 200
-                                Latin words, combined </p>
-                            <ul>
-                                <li>Research</li>
-                                <li>Design and Development</li>
-                                <li>Porting and Optimization</li>
-                                <li>System integration</li>
-                                <li>Verification, Validation and Testing</li>
-                                <li>Maintenance and Support</li>
-                            </ul>
+                            <p id="title"></p>
+                            <p><a id="answerA" class="add-re" style="margin-left: 2em;margin-top: 1em"
+                                  href="javascript:void(0);"></a>
+                                <a id="answerB" class="add-re" style="margin-left: 2em;margin-top: 1em"
+                                   href="javascript:void(0);"></a>
+                                <a id="answerC" class="add-re" style="margin-left: 2em;margin-top: 1em"
+                                   href="javascript:void(0);"></a>
+                                <a id="answerD" class="add-re" style="margin-left: 2em;margin-top: 1em"
+                                   href="javascript:void(0);"></a>
+                            </p>
+                            <p style="text-align: right;margin-top: 0em">
+                                <input id="nextid" type="hidden" value="">
+                                <a id="next" class="add-re" style="margin-top: 0em" href="javascript:void(0);"
+                                   onclick="next()">下一题</a>
+                            </p>
                         </div>
 
                     </li>
@@ -308,13 +384,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="facts1">
                             <c:forEach items="${list.files}" var="file">
 
-                                <div class="color"><p>${file.name}</p>
-                                    <span>${file.download_num}</span>
+                                <div class="color">
+                                    <p>文档名称${file.name}</p>
+                                    <p>文档名称${file.name}</p>
+                                    <span>已被下载${file.download_num}次</span>
                                     <div class="clearfix"></div>
                                 </div>
-
-
                             </c:forEach>
+                            <c:if test='${list.files.size() ==0}'>
+                                <div class="color" style="text-align: center">
+                                    <p>该实验暂无相关文档</p>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </c:if>
+
+
                         </div>
 
                     </li>
@@ -324,14 +408,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="comments-top-top" style="margin-top: 0em">
                                 <div class="top-comment-left">
                                     <img class="img-responsive" src="${basePath}image/${discuss.user.image}" alt="">
-                                    <a class="add-re" style="margin-top: 1em" href="#">${discuss.user.username}</a>
+                                    <a class="add-re" style="margin-top: 1em"
+                                       href="javascript:void(0);">${discuss.user.username}</a>
                                 </div>
                                 <div class="top-comment-right">
-                                    <h6><a href="#">心得体会:</a></h6>
+                                    <h6><a href="javascript:void(0);">心得体会:</a></h6>
                                     <p>${discuss.content}</p>
                                     <br>
                                     <div style="width: 100%;margin-right: 0em;text-align: right">${discuss.time} <a
-                                            class="add-re" style="margin-top: 1em;margin-right: 0em" href="#">回复</a>
+                                            class="add-re" style="margin-top: 1em;margin-right: 0em"
+                                            href="javascript:void(0);">回复<span
+                                            class="notification green">${discuss.replyNum }</span></a>
                                     </div>
 
                                 </div>
@@ -340,6 +427,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="clearfix"></div>
                         </c:forEach>
+                        <div class="comments-top-top" style="margin-top: 2em">
+                            <div class="top-comment-left">
+                                <c:if test="${sessionScope.user eq null }">
+                                    <img class="img-responsive" src="${basePath}image/0.png"
+                                         alt="">
+                                </c:if>
+                                <c:if test="${sessionScope.user != null }">
+                                    <img class="img-responsive" src="${basePath}image/${sessionScope.user.image}"
+                                         alt="">
+                                </c:if>
+
+                                <a class="add-re" style="margin-top: 1em" href="javascript:void(0);">
+                                    <c:if test="${sessionScope.user eq null }">游客</c:if>
+                                    ${sessionScope.user.username}
+                                </a>
+                            </div>
+                            <div class="top-comment-right">
+                                <h6><a href="javascript:void(0);">我的体会:</a></h6>
+                                <p>
+                                    <script id="container" type="text/plain">
+                                    </script>
+                                </p>
+                                <br>
+                                <div style="width: 100%;margin-right: 0em;text-align: right">${discuss.time} <a
+                                        class="add-re" style="margin-top: 1em;margin-right: 0em"
+                                        href="javascript:void(0);">回复</a>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
                     </li>
                     <div class="clearfix"></div>
                 </ul>
@@ -354,4 +473,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <%@include file="foot.jsp" %>
 </body>
 </html>
-			

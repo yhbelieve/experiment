@@ -3,6 +3,9 @@ package cn.yuhao.experiment.controller;
 import cn.yuhao.experiment.pojo.*;
 import cn.yuhao.experiment.service.IndexService;
 import cn.yuhao.experiment.service.SysUserService;
+import cn.yuhao.experiment.utils.DateUtils;
+import cn.yuhao.experiment.utils.StringUtils;
+import cn.yuhao.experiment.utils.Uuid;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -31,21 +34,23 @@ public class IndexController {
 
     /**
      * 注册
+     *
      * @return
      */
     @RequestMapping("register")
-    public String register(){
+    public String register() {
         return "view/register";
     }
 
     /**
      * 登录
+     *
      * @return
      */
-    @RequestMapping(value = "login",method = RequestMethod.GET)
-    public String login(@ModelAttribute("msg") String msg,Model model){
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String login(@ModelAttribute("msg") String msg, Model model) {
         System.out.println("login");
-        model.addAttribute("msg",msg);
+        model.addAttribute("msg", msg);
         return "view/login";
     }
 
@@ -57,7 +62,7 @@ public class IndexController {
      */
 
 
-    @RequestMapping(value = "/showIndex",method = RequestMethod.GET)
+    @RequestMapping(value = "/showIndex", method = RequestMethod.GET)
     public String findAcategory(Model model, HttpServletRequest request) {
         Acategory acategory = new Acategory();
         acategory.setAxs(true);
@@ -99,9 +104,9 @@ public class IndexController {
      * @param bid
      * @return
      */
-    @RequestMapping(value = "findBcategoryVideo/{bid}",method = RequestMethod.GET)
+    @RequestMapping(value = "findBcategoryVideo/{bid}", method = RequestMethod.GET)
     public String findBcategoryVideo(Model model, @PathVariable("bid") String bid) {
-        PageHelper.startPage(1,6);
+        PageHelper.startPage(1, 6);
         PageHelper.orderBy("click_num desc");
         List<Map> maps = indexService.findVideoByBid(bid);
         JSONArray list = JSON.parseArray(JSON.toJSONString(maps));
@@ -114,27 +119,47 @@ public class IndexController {
 
     /**
      * ajax查找评论
+     *
      * @return
      */
     @RequestMapping("ajaxFindComment")
     public Map ajaxFindComment() {
         return null;
     }
-    /**
-     * ajax查找文件
-     * @return
-     */
-    @RequestMapping("ajaxFindFile")
-    public Map ajaxFindFile() {
-        return null;
-    }
+
     /**
      * ajax查找试题
+     *
      * @return
      */
     @RequestMapping("ajaxFindExam")
-    public Map ajaxFindExam() {
-        return null;
+    @ResponseBody
+    public Map ajaxFindExam(Model model, String next, String vid) {
+        if (StringUtils.isEmpty(next)) {
+            PageHelper.startPage(1, 1);
+        } else {
+            PageHelper.startPage(Integer.parseInt(next), 1);
+        }
+        List<Map> list = indexService.findExamByVid(vid);
+        Map map = new HashMap();
+        if (list.size()==0){
+            map.put("msg","您已经答完了所有的题目！如果不过瘾，可以尝试其他实验哦");
+        }else {
+            map.put("a", list.get(0).get("a"));
+            map.put("b", list.get(0).get("b"));
+            map.put("c", list.get(0).get("c"));
+            map.put("d", list.get(0).get("d"));
+            map.put("answer", list.get(0).get("answer"));
+            map.put("tip", list.get(0).get("tip"));
+            map.put("content", list.get(0).get("content"));
+            if (StringUtils.isEmpty(next)) {
+                map.put("next", 2);
+            } else {
+                map.put("next", Integer.parseInt(next) + 1);
+            }
+            map.put("msg","");
+        }
+        return map;
     }
 
     /**
@@ -144,7 +169,7 @@ public class IndexController {
      * @param cid
      * @return
      */
-    @RequestMapping(value = "findCcategoryVideo/{cid}/{bid}",method = RequestMethod.GET)
+    @RequestMapping(value = "findCcategoryVideo/{cid}/{bid}", method = RequestMethod.GET)
     public String findCcategoryVideo(Model model, @PathVariable("cid") String cid, @PathVariable("bid") String bid) {
         Video video = new Video();
         video.setIsShow(1);
@@ -167,32 +192,34 @@ public class IndexController {
      * @param vid
      * @return
      */
-    @RequestMapping(value = "findVideoById/{vid}",method = RequestMethod.GET)
+    @RequestMapping(value = "findVideoById/{vid}", method = RequestMethod.GET)
     public String findVideoById(Model model, @PathVariable("vid") String vid) {
         Map maps = indexService.findVideoById(vid);
-//        String video = JSON.toJSONString(maps);
-//       JSONArray list=JSON.parseArray(video);
         System.out.println(maps);
         model.addAttribute("list", maps);
         return "view/single";
     }
 
+    /**
+     * 评论添加成功
+     * 博客评论
+     * 实验评论
+     * 习题评论
+     * @param discuss
+     * @return
+     */
 
 
+    @RequestMapping(value = "ajaxAddComment", method = RequestMethod.POST)
+    public Map<String,Object> ajaxAddComment( Discuss discuss) {
+       discuss.setTime(DateUtils.getNowTime());
+       discuss.setId(Uuid.getUuid());
+       indexService.addCommment(discuss);
+       Map<String,Object> map=new HashMap<>();
+       map.put("msg","评论成功");
+        return map;
+    }
 
-/*	@RequestMapping("/showUserToJspById/{userId}")
-    public String showUser(Model model,@PathVariable("userId") Long userId){
-		SysUser user = this.sysUserService.getById(userId);
-		model.addAttribute("user", user);
-		return "showUser";
-	}*/
-	
-	/*@RequestMapping("/showUserToJSONById/{userId}")
-	@ResponseBody
-	public SysUser showUser(@PathVariable("userId") Long userId){
-		SysUser user = sysUserService.getById(userId);
-		return user;
-	}*/
 
 
     @RequestMapping("/test-logback")

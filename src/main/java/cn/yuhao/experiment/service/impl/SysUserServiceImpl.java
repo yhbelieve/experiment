@@ -1,9 +1,7 @@
 package cn.yuhao.experiment.service.impl;
 
 import cn.yuhao.experiment.mapper.*;
-import cn.yuhao.experiment.pojo.Blog;
-import cn.yuhao.experiment.pojo.User;
-import cn.yuhao.experiment.pojo.Video;
+import cn.yuhao.experiment.pojo.*;
 import cn.yuhao.experiment.service.SysUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +19,8 @@ public class SysUserServiceImpl implements SysUserService {
     private UserMapper userMapper;
     @Resource
     private VideoMapper videoMapper;
-
+    @Resource
+    private IndexMapper indexMapper;
     @Resource
     private BlogMapper blogMapper;
     @Resource
@@ -99,6 +98,16 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public int updateByPrimaryKeySelective(Video record) {
         return videoMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public List<Map> findMyComment(Discuss discuss) {
+        return indexMapper.findComment(discuss);
+    }
+
+    @Override
+    public List<Map> findMyReply(Reply reply) {
+        return indexMapper.findReply(reply);
     }
 
 

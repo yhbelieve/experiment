@@ -29,7 +29,8 @@ public class IndexServiceImpl implements IndexService {
     private IndexMapper indexMapper;
     @Resource
     private UserMapper userMapper;
-
+    @Resource
+    private DiscussMapper discussMapper;
 
     @Override
     public List<Map> findAcategory(Acategory acategory) {
@@ -90,6 +91,11 @@ public class IndexServiceImpl implements IndexService {
         List<Map> discussMap = indexMapper.findComment(discuss);
         for (int i = 0; i < discussMap.size(); i++) {
             discussMap.get(i).put("user", userMapper.selectByPrimaryKey(discussMap.get(i).get("uid").toString()));
+            Reply reply=new Reply();
+            reply.setDid((String) discussMap.get(i).get("id"));
+            System.out.println(reply.getDid());
+            List<Map> repList=  indexMapper.findReply(reply);
+            discussMap.get(i).put("replyNum",repList.size());
         }
 
         maps.put("user", user);
@@ -123,6 +129,17 @@ public class IndexServiceImpl implements IndexService {
     @Override
     public Bcategory selectByPrimaryKey(String bid) {
         return bcategoryMapper.selectByPrimaryKey(bid);
+    }
+
+    @Override
+    public List<Map> findExamByVid(String vid) {
+        return indexMapper.findExamByVid(vid);
+    }
+
+    @Override
+    @Transactional
+    public void addCommment(Discuss discuss) {
+        discussMapper.insertSelective(discuss);
     }
 
 

@@ -28,10 +28,11 @@
     <mvc:resources mapping="/view/**" location="/WEB-INF/statics/view/"/>
     <mvc:resources mapping="/user/**" location="/WEB-INF/statics/user/"/>
     <!--<mvc:resources mapping="/admin/**" location="/WEB-INF/statics/admin/"/>-->
-    <mvc:resources mapping="/admin/**" location="/admin/"/>
-    <!--<mvc:resources mapping="/view/**" location="/view/"/>-->
-    <!--<mvc:resources mapping="/user/**" location="/user/"/>-->
+    <!--<mvc:resources mapping="/admin/**" location="/admin/"/>-->
+    <mvc:resources mapping="/usertest/**" location="/usertest/"/>
+    <mvc:resources mapping="/ueditor/**" location="/ueditor/"/>
     <mvc:resources mapping="/validation/**" location="/WEB-INF/statics/validation/"/>
+
     <mvc:resources mapping="/video/**" location="/WEB-INF/statics/upload/video/"/>
     <mvc:resources mapping="/image/**" location="/WEB-INF/statics/upload/image/"/>
     <mvc:resources mapping="/file/**" location="/WEB-INF/statics/upload/file/"/>

@@ -10,9 +10,6 @@
     <meta name="author" content="">
 </head>
 <body>
-
-
 <% response.sendRedirect("Index/showIndex"); %>
-
 </body>
 </html>

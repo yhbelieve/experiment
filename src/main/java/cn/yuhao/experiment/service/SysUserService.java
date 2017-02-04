@@ -1,8 +1,6 @@
 package cn.yuhao.experiment.service;
 
-import cn.yuhao.experiment.pojo.Blog;
-import cn.yuhao.experiment.pojo.User;
-import cn.yuhao.experiment.pojo.Video;
+import cn.yuhao.experiment.pojo.*;
 
 import java.util.List;
 import java.util.Map;
@@ -28,4 +26,8 @@ public interface SysUserService {
 
 	int deleteByPrimaryKey(String id);
 	int updateByPrimaryKeySelective(Video record);
+
+    List<Map> findMyComment(Discuss discuss);
+
+	List<Map> findMyReply(Reply reply);
 }

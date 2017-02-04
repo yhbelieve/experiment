@@ -23,4 +23,6 @@ public interface IndexMapper {
     List<Map> findComment(Discuss discuss);
 
     List<Map> findReply(Reply reply);
+
+    List<Map> findExamByVid(String vid);
 }

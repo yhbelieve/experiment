@@ -11,9 +11,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <base href="<%=basePath%>">
     <meta charset="utf-8">
-    <title>Free HTML5 Bootstrap Admin Template</title>
+    <title>个人主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
     <meta name="author" content="Muhammad Usman">
@@ -61,24 +61,17 @@
         <!--/span-->
         <!-- left menu ends -->
 
-        <noscript>
-            <div class="alert alert-block col-md-12">
-                <h4 class="alert-heading">Warning!</h4>
 
-                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
-                    enabled to use this site.</p>
-            </div>
-        </noscript>
 
         <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
             <div>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">个人主页</a>
                     </li>
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="#">范德萨发疯</a>
                     </li>
                 </ul>
             </div>

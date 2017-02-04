@@ -14,8 +14,8 @@
                 <c:if test="${sessionScope.user !=null}">
                     <ul>
                         <li ><a href="javascript:void(0)">尊敬的用户：${sessionScope.user.username }</a></li>
-                        <li><a  href="<c:url value="/Index/register"/>"  >我的个人主页</a></li>
-                        <li><a  href="<c:url value="/User/logout"/>"  >退出登录</a></li>
+                        <li><a  href="<c:url value="/user/showMyInformation"/>"  >我的个人主页</a></li>
+                        <li><a  href="<c:url value="/user/logout"/>"  >退出登录</a></li>
                     </ul>
                 </c:if>
 

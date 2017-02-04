@@ -1,3 +1,7 @@
+<%@ page language="java" import="java.util.*"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="navbar navbar-default" role="navigation">
 
     <div class="navbar-inner">
@@ -32,7 +36,7 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" id="themes">
-                <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
+                <li><a data-value="classic" href="#"><i class="whitespace"></i> 夫斯基的费isa</a></li>
                 <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
                 <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
                 <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>

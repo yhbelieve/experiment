@@ -10,21 +10,24 @@ import java.util.Map;
  */
 public interface IndexService {
 
-     List<Map> findAcategory(Acategory acategory);
+    List<Map> findAcategory(Acategory acategory);
 
-     List<Map> findBcategoryByAid(Bcategory bcategory);
+    List<Map> findBcategoryByAid(Bcategory bcategory);
 
-     List<Map> findVideo(Video video);
+    List<Map> findVideo(Video video);
 
-     List<Map> findCcategoryByBid(Ccategory ccategory);
+    List<Map> findCcategoryByBid(Ccategory ccategory);
 
-     List<Map> findVideoByBid(String bid);
+    List<Map> findVideoByBid(String bid);
 
-    Map<String,String> findVideoById(String vid);
+    Map<String, String> findVideoById(String vid);
 
-     Map<String,String> findAcategotyAll(String aid);
+    Map<String, String> findAcategotyAll(String aid);
 
-     Bcategory selectByPrimaryKey(String bid);
+    Bcategory selectByPrimaryKey(String bid);
 
 
+    List<Map> findExamByVid(String vid);
+
+    void addCommment(Discuss discuss);
 }

@@ -1,8 +1,6 @@
 package cn.yuhao.experiment.controller;
 
-import cn.yuhao.experiment.pojo.Blog;
-import cn.yuhao.experiment.pojo.User;
-import cn.yuhao.experiment.pojo.Video;
+import cn.yuhao.experiment.pojo.*;
 import cn.yuhao.experiment.service.IndexService;
 import cn.yuhao.experiment.service.SysUserService;
 import cn.yuhao.experiment.utils.DESUtils;
@@ -12,7 +10,6 @@ import cn.yuhao.experiment.utils.Uuid;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.github.pagehelper.PageHelper;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -30,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/User")
+@RequestMapping("/user")
 public class SysUserController {
 
 
@@ -107,7 +103,22 @@ public class SysUserController {
                     return "view/message";
                 } else {
                     //登录成功
-                    request.getSession().setAttribute("user", listUser.get(0));
+                    user.setUid(listUser.get(0).get("uid").toString());
+                    user.setUsername(listUser.get(0).get("username").toString());
+                    user.setPassword(listUser.get(0).get("password").toString());
+                    user.setSex(listUser.get(0).get("sex").toString());
+                    user.setEmail(listUser.get(0).get("email").toString());
+                    user.setBirthday(listUser.get(0).get("birthday").toString());
+                    user.setMoney((Integer) listUser.get(0).get("money"));
+                    user.setPhone(listUser.get(0).get("phone").toString());
+                    user.setImage(listUser.get(0).get("image").toString());
+                    user.setIsShow((Boolean) listUser.get(0).get("is_show"));
+                    user.setLevel((Integer) listUser.get(0).get("level"));
+                    user.setIsActive((Boolean) listUser.get(0).get("is_active"));
+                    user.setAddress(listUser.get(0).get("address").toString());
+                    user.setRegistTime(listUser.get(0).get("regist_time").toString());
+                    user.setType(listUser.get(0).get("type").toString());
+                    request.getSession().setAttribute("user", user);
                     return "redirect:/Index/showIndex";
 
                 }
@@ -126,7 +137,7 @@ public class SysUserController {
                 model.addAttribute("user", user);
                 return "view/login";
             } else {
-                model.addAttribute("msg", "密码不正确！");
+                model.addAttribute("msg", "密码错误");
                 model.addAttribute("user", user);
                 return "view/login";
             }
@@ -191,10 +202,21 @@ public class SysUserController {
         return map;
     }
 
-
     @RequestMapping("/showTable")
     public String showTable() {
         return "user/table";
+    }
+
+    /**
+     * 显示用户的个人信息
+     *
+     * @return
+     */
+    @RequestMapping("/showMyInformation")
+    public String showMyInformation() {
+
+
+        return "user/index";
     }
 
 
@@ -220,15 +242,17 @@ public class SysUserController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/cancerCollectVideo/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/cancerCollectVideo/{id}", method = RequestMethod.GET)
     public String cancerCollectVideo(Model model, @PathVariable("id") String id) {
-      sysUserService.deleteByPrimaryKey(id);
-      model.addAttribute("msg","删除成功");
+        sysUserService.deleteByPrimaryKey(id);
+        model.addAttribute("msg", "删除成功");
 //      返回显示所有收藏的界面
         return "user/table";
     }
+
     /**
      * 上传实验
+     *
      * @param model
      * @param httpSession
      * @param video
@@ -268,6 +292,7 @@ public class SysUserController {
     /**
      * 更新实验
      * 包括删除该实验（假删除）
+     *
      * @param model
      * @return
      */
@@ -278,23 +303,12 @@ public class SysUserController {
         return "user/table";
     }
 
-    /**
-     * 写我自己的博客
-     *
-     * @param model
-     * @param httpSession
-     * @return
-     */
-    @RequestMapping("writeMyBlog")
-    public String writeMyBlog(Model model, HttpSession httpSession, Blog blog) {
-        User user = (User) httpSession.getAttribute("user");
-        blog.setUid(user.getUid());
-        blog.setTime(DateUtils.getNowTime());
-        blog.setId(Uuid.getUuid());
-        sysUserService.insertSelective(blog);
-//       转到自己的博客列表
-        return "user/table";
+    @RequestMapping("addMyBlog")
+    public String addMyBlog(Model model, Blog blog) {
+        model.addAttribute("list", blog);
+        return "user/addBlog";
     }
+
 
     /**
      * 查找自己的博客
@@ -304,16 +318,22 @@ public class SysUserController {
      * @return
      */
     @RequestMapping("findMyBlog")
-    public String findMyBlog(Model model, HttpSession httpSession) {
-        User user = (User) httpSession.getAttribute("user");
-        Blog blog = new Blog();
-        blog.setUid(user.getUid());
-        List<Map> maps = sysUserService.findBlog(blog);
-        JSONArray list = JSON.parseArray(JSON.toJSONString(maps));
-        model.addAttribute("list", list);
-        return "user/table";
+    public String findMyBlog(Model model, HttpSession httpSession, Blog blog) {
+        if (blog.getId() == null || blog.getId().equals("")) {
+            User user = (User) httpSession.getAttribute("user");
+            blog.setUid(user.getUid());
+            blog.setIsActive(1);
+            List<Map> maps = sysUserService.findBlog(blog);
+            JSONArray list = JSON.parseArray(JSON.toJSONString(maps));
+            System.out.println(list);
+            model.addAttribute("list", list);
+            return "user/table_blog";
+        } else {
+            List<Map> maps = sysUserService.findBlog(blog);
+            model.addAttribute("list", maps.get(0));
+            return "user/addBlog";
+        }
     }
-
     /**
      * 更新自己的博客
      *
@@ -321,26 +341,71 @@ public class SysUserController {
      * @return
      */
     @RequestMapping("updateMyBlog")
-    public String updateMyBlog(Model model, Blog blog) {
-        sysUserService.updateByPrimaryKeySelective(blog);
+    public String updateMyBlog(Model model, Blog blog, HttpSession httpSession) {
+        if (blog.getId() == null || blog.getId().equals("")) {
+            User user = (User) httpSession.getAttribute("user");
+            blog.setUid(user.getUid());
+            blog.setTime(DateUtils.getNowTime());
+            blog.setId(Uuid.getUuid());
+            sysUserService.insertSelective(blog);
+        } else {
+            sysUserService.updateByPrimaryKeySelective(blog);
+        }
 //       返回博客显示界面
-        model.addAttribute("msg", "修改成功！");
-        return "user/table";
+        model.addAttribute("msg", "操作成功！");
+        return "redirect:/user/findMyBlog.action";
     }
 
     /**
      * 完善自己的信息
-     *包括修改密码，修改头像
+     * 包括修改密码，修改头像
+     *
      * @param model
      * @return
      */
     @RequestMapping("updateUser")
     public String updateUser(RedirectAttributes model, HttpServletRequest request, User user) {
         sysUserService.updateByPrimaryKeySelective(user);
-       List list=sysUserService.findUser(user);
-        request.getSession().setAttribute("user",list.get(0));
+        List list = sysUserService.findUser(user);
+        request.getSession().setAttribute("user", list.get(0));
         model.addAttribute("msg", "个人信息修改成功！");
 //       返回自己个人信息的界面
+        return "redirect:/user/table";
+    }
+
+    /**
+     * 查找自己的评论
+     *
+     * @param model
+     * @param httpSession
+     * @return
+     */
+    @RequestMapping("findMyComment")
+    public String findMyComment(Model model, HttpSession httpSession) {
+        User user = (User) httpSession.getAttribute("user");
+        Discuss discuss = new Discuss();
+        discuss.setUid(user.getUid());
+        PageHelper.orderBy("time desc");
+        List<Map> list = sysUserService.findMyComment(discuss);
+        model.addAttribute("list", list);
+        return "redirect:/user/table";
+    }
+
+    /**
+     * 查找有谁回复了自己
+     *
+     * @param model
+     * @param did
+     * @return
+     */
+
+    @RequestMapping(value = "findMyReply/{did}", method = RequestMethod.GET)
+    public String findMyReply(Model model, @PathVariable("did") String did) {
+        Reply reply = new Reply();
+        reply.setDid(did);
+        PageHelper.orderBy("time desc");
+        List<Map> list = sysUserService.findMyReply(reply);
+        model.addAttribute("list", list);
         return "redirect:/user/table";
     }
 

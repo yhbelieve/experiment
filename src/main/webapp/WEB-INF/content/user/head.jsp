@@ -1,3 +1,15 @@
+<%@ page language="java" import="java.util.*"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<c:if test="${not empty msg}">
+        <script>
+        alert('${msg}');
+        </script>
+</c:if>
+
+
 <div class="navbar navbar-default" role="navigation">
 
     <div class="navbar-inner">
@@ -13,35 +25,34 @@
         <!-- user dropdown starts -->
         <div class="btn-group pull-right">
             <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
+                <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> ${sessionScope.user.username}</span>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
+                <li><a href="#">我的信息</a></li>
                 <li class="divider"></li>
-                <li><a href="login.jsp">Logout</a></li>
+                <li><a href="<c:url value='/user/logout'/>">退出</a></li>
             </ul>
         </div>
         <!-- user dropdown ends -->
 
         <!-- theme selector starts -->
-        <div class="btn-group pull-right theme-container animated tada" id="items_div">
+        <div class="btn-group pull-right theme-container animated tada">
             <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                 <i class="glyphicon glyphicon-tint"></i><span
-                    class="hidden-sm hidden-xs"> Change Theme / Skin</span>
+                    class="hidden-sm hidden-xs"> 跟换主题 / 皮肤</span>
                 <span class="caret"></span>
             </button>
-
             <ul class="dropdown-menu" id="themes">
-                <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
-                <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
-                <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
-                <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>
-                <li><a data-value="darkly" href="#"><i class="whitespace"></i> Darkly</a></li>
+                <li><a data-value="classic" href="#"><i class="whitespace"></i> 经典</a></li>
+                <li><a data-value="cerulean" href="#"><i class="whitespace"></i> 天蓝色</a></li>
+                <li><a data-value="cyborg" href="#"><i class="whitespace"></i> 暗黑色</a></li>
+                <li><a data-value="simplex" href="#"><i class="whitespace"></i> 单一</a></li>
+                <li><a data-value="darkly" href="#"><i class="whitespace"></i> 黑色</a></li>
                 <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
-                <li><a data-value="slate" href="#"><i class="whitespace"></i> Slate</a></li>
+                <li><a data-value="slate" href="#"><i class="whitespace"></i> 深蓝灰色</a></li>
                 <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
-                <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
+                <li><a data-value="united" href="#"><i class="whitespace"></i> 中国红</a></li>
             </ul>
         </div>
         <!-- theme selector ends -->

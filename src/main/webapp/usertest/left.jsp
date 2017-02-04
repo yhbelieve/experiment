@@ -1,3 +1,6 @@
+<%@ page language="java" import="java.util.*"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="col-sm-2 col-lg-2">
     <div class="sidebar-nav">
         <div class="nav-canvas">
@@ -5,7 +8,7 @@
 
             </div>
             <ul class="nav nav-pills nav-stacked main-menu">
-                <li class="nav-header">Main</li>
+                <li class="nav-header">主菜单</li>
                 <li><a class="ajax-link" href="index.jsp"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
                 </li>
                 <li><a class="ajax-link" href="ui.jsp"><i class="glyphicon glyphicon-eye-open"></i><span> UI Features</span></a>

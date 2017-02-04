@@ -1,3 +1,6 @@
+<%@ page language="java" import="java.util.*"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="col-sm-2 col-lg-2">
     <div class="sidebar-nav">
         <div class="nav-canvas">
@@ -5,42 +8,41 @@
 
             </div>
             <ul class="nav nav-pills nav-stacked main-menu">
-                <li class="nav-header">Main</li>
-                <li><a class="ajax-link" href="index.jsp"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+                <li class="nav-header">个人主页</li>
+                <li><a class="ajax-link" href="<c:url value="/user/showMyInformation"/>"><i
+                        class="glyphicon glyphicon-home"></i><span> 我的信息</span></a>
                 </li>
-                <li><a class="ajax-link" href="ui.jsp"><i class="glyphicon glyphicon-eye-open"></i><span> UI Features</span></a>
+                <li><a class="ajax-link" href="ui.jsp"><i class="glyphicon glyphicon-eye-open"></i><span> 个人信息修改</span></a>
                 </li>
                 <li><a class="ajax-link" href="form.jsp"><i
-                        class="glyphicon glyphicon-edit"></i><span> Forms</span></a></li>
-                <li><a class="ajax-link" href="chart.jsp"><i class="glyphicon glyphicon-list-alt"></i><span> Charts</span></a>
+                        class="glyphicon glyphicon-edit"></i><span> 密码重置</span></a></li>
+                <li><a class="ajax-link" href="form.jsp"><i
+                        class="glyphicon glyphicon-picture"></i><span> 选择头像</span></a></li>
+                <li class="nav-header hidden-md">博客专区</li>
+                <li><a class="ajax-link" href="<c:url value="/user/findMyBlog"/>"><i class="glyphicon glyphicon-list-alt"></i><span> 我的博客</span></a>
                 </li>
-                <li><a class="ajax-link" href="typography.jsp"><i class="glyphicon glyphicon-font"></i><span> Typography</span></a>
+                <li><a class="ajax-link" href="<c:url value="/user/addMyBlog"/>"><i
+                        class="glyphicon glyphicon-font"></i><span> 添加博客</span></a>
                 </li>
-                <li><a class="ajax-link" href="gallery.jsp"><i class="glyphicon glyphicon-picture"></i><span> Gallery</span></a>
+                <li class="nav-header hidden-md">评论专区</li>
+                <li><a class="ajax-link" href="gallery.jsp"><i
+                        class="glyphicon glyphicon-picture"></i><span> 我的评论</span></a>
                 </li>
-                <li class="nav-header hidden-md">Sample Section</li>
+                <li class="nav-header hidden-md">实验专区</li>
                 <li><a class="ajax-link" href="table.jsp"><i
-                        class="glyphicon glyphicon-align-justify"></i><span> Tables</span></a></li>
+                        class="glyphicon glyphicon-align-justify"></i><span> 我的实验</span></a></li>
                 <li class="accordion">
-                    <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Accordion Menu</span></a>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">Child Menu 1</a></li>
-                        <li><a href="#">Child Menu 2</a></li>
-                    </ul>
+                    <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 上传实验</span></a>
                 </li>
-                <li><a class="ajax-link" href="calendar.jsp"><i class="glyphicon glyphicon-calendar"></i><span> Calendar</span></a>
+                <li><a class="ajax-link" href="calendar.jsp"><i
                 </li>
+                <li class="nav-header hidden-md">数据分析专区</li>
                 <li><a class="ajax-link" href="grid.jsp"><i
-                        class="glyphicon glyphicon-th"></i><span> Grid</span></a></li>
-                <li><a href="tour.jsp"><i class="glyphicon glyphicon-globe"></i><span> Tour</span></a></li>
-                <li><a class="ajax-link" href="icon.html"><i
-                        class="glyphicon glyphicon-star"></i><span> Icons</span></a></li>
-                <li><a href="error.jsp"><i class="glyphicon glyphicon-ban-circle"></i><span> Error Page</span></a>
-                </li>
-                <li><a href="login.jsp"><i class="glyphicon glyphicon-lock"></i><span> Login Page</span></a>
+                        class="glyphicon glyphicon-th"></i><span> 可视化分析</span></a></li>
+
                 </li>
             </ul>
-            <label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
+
         </div>
     </div>
 </div>

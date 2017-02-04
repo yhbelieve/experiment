@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>汇实验账号登录</h1>
 		<div class="account-pass">
 		<div class="col-md-8 account-top">
-			<form action="/User/login" method="post" id="loginForm">
+			<form action="/user/login" method="post" id="loginForm">
 				
 			<div> 	
 				<span>用户名</span>

@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class=" container">
     <div class=" register">
         <h1>注册汇实验账号</h1>
-        <form id="register" action="/User/regist" method="post">
+        <form id="register" action="/user/regist" method="post">
             <div class="col-md-6 register-top-grid">
 
                 <div>

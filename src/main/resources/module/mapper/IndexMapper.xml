@@ -6,9 +6,9 @@
         select * from acategory where 1=1
 
 
-            <if test="axs!=null">
-               and axs=#{axs}
-            </if>
+        <if test="axs!=null">
+            and axs=#{axs}
+        </if>
 
 
     </select>
@@ -69,33 +69,39 @@ AND ccategory.`bid`=#{bid}
     <select id="findComment" resultType="map">
         SELECT * from discuss where 1=1
 
-            <if test="videoId != null">
-                and   video_id=#{videoId}
-            </if>
-            <if test="blogId != null">
-                and   blog_id=#{blogId}
-            </if>
-            <if test="examId != null">
-                and  exam_id=#{examId}
-            </if>
-            <if test="uid != null">
-                and  uid=#{uid}
-            </if>
+        <if test="videoId != null">
+            and video_id=#{videoId}
+        </if>
+        <if test="blogId != null">
+            and blog_id=#{blogId}
+        </if>
+        <if test="examId != null">
+            and exam_id=#{examId}
+        </if>
+        <if test="uid != null">
+            and uid=#{uid}
+        </if>
 
 
     </select>
     <select id="findReply" resultType="map" parameterType="String">
-        select * from reply WHEN 1=1
+        select * from reply where 1=1
 
-            <if test="did!=null">
-             and   did=#{did}
-            </if>
-            <if test="uid!=null">
-                and  uid=#{uid}
-            </if>
+        <if test="did!=null">
+            and did=#{did}
+        </if>
+        <if test="uid!=null">
+            and uid=#{uid}
+        </if>
 
     </select>
     <select id="findFile" resultType="map">
      SELECT * from file where vid=#{vid}
     </select>
+
+    <select id="findExamByVid" resultType="map">
+        SELECT * from exam where vid=#{vid}
+
+    </select>
+
 </mapper>
