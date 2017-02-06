@@ -29,13 +29,13 @@
                         class="glyphicon glyphicon-picture"></i><span> 我的评论</span></a>
                 </li>
                 <li class="nav-header hidden-md">实验专区</li>
-                <li><a class="ajax-link" href="table.jsp"><i
+                <li><a class="ajax-link" href="<c:url value="/user/showMyVideo"/>"><i
                         class="glyphicon glyphicon-align-justify"></i><span> 我的实验</span></a></li>
-                <li class="accordion">
-                    <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 上传实验</span></a>
+                <li >
+                    <a class="ajax-link" href="<c:url value="/user/addVideo"/>"><i class="glyphicon glyphicon-plus"></i><span> 上传实验</span></a>
                 </li>
-                <li><a class="ajax-link" href="calendar.jsp"><i
-                </li>
+
+
                 <li class="nav-header hidden-md">数据分析专区</li>
                 <li><a class="ajax-link" href="grid.jsp"><i
                         class="glyphicon glyphicon-th"></i><span> 可视化分析</span></a></li>

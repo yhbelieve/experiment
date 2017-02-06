@@ -84,46 +84,59 @@
                 <div class="box col-md-12">
                     <div class="box-inner">
                         <div class="box-header well" data-original-title="">
-                            <h2><i class="glyphicon glyphicon-user"></i> Datatable + Responsive</h2>
+                            <h2><i class="glyphicon glyphicon-user"></i> 我的实验</h2>
 
 
                         </div>
                         <div class="box-content">
-                            <div class="alert alert-info">For help with such table please check</div>
+
                             <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
                                 <thead>
                                 <tr>
-                                    <th>Username</th>
-                                    <th>Date registered</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>实验分类</th>
+                                    <th>实验名称</th>
+                                    <th>点击量</th>
+                                    <th>收藏量</th>
+                                    <th>下载量</th>
+                                    <th>积分</th>
+                                    <th>上传时间</th>
+                                    <th>管理</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach items="${list}" var="list">
                                 <tr>
-                                    <td>David R</td>
-                                    <td class="center">2012/01/01</td>
-                                    <td class="center">Member</td>
+                                    <td>${list.cname}</td>
+                                    <td class="center">${list.video_name}</td>
+                                    <td class="center">${list.click_num}</td>
+                                    <td class="center">${list.like_num}</td>
                                     <td class="center">
-                                        <span class="label-success label label-default">Active</span>
+                                        ${list.download_num}
                                     </td>
                                     <td class="center">
-                                        <a class="btn btn-success" href="${basePath}user/#">
+                                       ${list.money}
+                                    </td>
+                                    <td class="center">
+                                        ${list.time}
+                                    </td>
+                                    <td class="center">
+                                        <a class="btn btn-success" href="<c:url value="/Index/findVideoById/${list.vid}"/>">
                                             <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            View
+                                            查看
                                         </a>
-                                        <a class="btn btn-info" href="${basePath}user/#">
+                                        <a class="btn btn-info"
+                                           href="<c:url value="/user/findMyBlog?vid=${list.vid}"/>">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>
-                                            Edit
+                                            修改
                                         </a>
-                                        <a class="btn btn-danger" href="${basePath}user/#">
+                                        <a class="btn btn-danger"
+                                           href="<c:url value="/user/updateMyVideo?vid=${list.vid}&isShow=0"/>">
                                             <i class="glyphicon glyphicon-trash icon-white"></i>
-                                            Delete
+                                            删除
                                         </a>
                                     </td>
                                 </tr>
-
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

@@ -30,4 +30,10 @@ public interface SysUserService {
     List<Map> findMyComment(Discuss discuss);
 
 	List<Map> findMyReply(Reply reply);
+
+    List<Map> findAcategory();
+
+	List<Map> findBcategory(Bcategory bcategory);
+
+	List<Map> findCcategory(Ccategory ccategory);
 }

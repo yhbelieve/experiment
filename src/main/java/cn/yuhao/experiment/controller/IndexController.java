@@ -3,6 +3,7 @@ package cn.yuhao.experiment.controller;
 import cn.yuhao.experiment.pojo.*;
 import cn.yuhao.experiment.service.IndexService;
 import cn.yuhao.experiment.service.SysUserService;
+import cn.yuhao.experiment.utils.DESUtils;
 import cn.yuhao.experiment.utils.DateUtils;
 import cn.yuhao.experiment.utils.StringUtils;
 import cn.yuhao.experiment.utils.Uuid;
@@ -142,9 +143,9 @@ public class IndexController {
         }
         List<Map> list = indexService.findExamByVid(vid);
         Map map = new HashMap();
-        if (list.size()==0){
-            map.put("msg","您已经答完了所有的题目！如果不过瘾，可以尝试其他实验哦");
-        }else {
+        if (list.size() == 0) {
+            map.put("msg", "您已经答完了所有的题目！如果不过瘾，可以尝试其他实验哦");
+        } else {
             map.put("a", list.get(0).get("a"));
             map.put("b", list.get(0).get("b"));
             map.put("c", list.get(0).get("c"));
@@ -157,7 +158,7 @@ public class IndexController {
             } else {
                 map.put("next", Integer.parseInt(next) + 1);
             }
-            map.put("msg","");
+            map.put("msg", "");
         }
         return map;
     }
@@ -205,22 +206,54 @@ public class IndexController {
      * 博客评论
      * 实验评论
      * 习题评论
+     *
      * @param discuss
      * @return
      */
 
 
     @RequestMapping(value = "ajaxAddComment", method = RequestMethod.POST)
-    public Map<String,Object> ajaxAddComment( Discuss discuss) {
-       discuss.setTime(DateUtils.getNowTime());
-       discuss.setId(Uuid.getUuid());
-       indexService.addCommment(discuss);
-       Map<String,Object> map=new HashMap<>();
-       map.put("msg","评论成功");
+    public Map<String, Object> ajaxAddComment(Discuss discuss) {
+        discuss.setTime(DateUtils.getNowTime());
+        discuss.setId(Uuid.getUuid());
+        indexService.addCommment(discuss);
+        Map<String, Object> map = new HashMap<>();
+        map.put("msg", "评论成功");
         return map;
     }
 
-
+    /**
+     * 模拟登陆
+     * @param request
+     * @return
+     */
+    @RequestMapping("testUserLogin")
+    @ResponseBody
+    public String testUserLogin( HttpServletRequest request) {
+        User user = new User();
+        user.setPassword("111111");
+        user.setUsername("过来看风");
+        user.setPassword(DESUtils.getEncryptString(user.getPassword()));
+        List<Map> listUser = sysUserService.findUser(user);
+        //登录成功
+        user.setUid(listUser.get(0).get("uid").toString());
+        user.setUsername(listUser.get(0).get("username").toString());
+        user.setPassword(listUser.get(0).get("password").toString());
+        user.setSex(listUser.get(0).get("sex").toString());
+        user.setEmail(listUser.get(0).get("email").toString());
+        user.setBirthday(listUser.get(0).get("birthday").toString());
+        user.setMoney((Integer) listUser.get(0).get("money"));
+        user.setPhone(listUser.get(0).get("phone").toString());
+        user.setImage(listUser.get(0).get("image").toString());
+        user.setIsShow((Boolean) listUser.get(0).get("is_show"));
+        user.setLevel((Integer) listUser.get(0).get("level"));
+        user.setIsActive((Boolean) listUser.get(0).get("is_active"));
+        user.setAddress(listUser.get(0).get("address").toString());
+        user.setRegistTime(listUser.get(0).get("regist_time").toString());
+        user.setType(listUser.get(0).get("type").toString());
+        request.getSession().setAttribute("user", user);
+        return "";
+    }
 
     @RequestMapping("/test-logback")
     @ResponseBody

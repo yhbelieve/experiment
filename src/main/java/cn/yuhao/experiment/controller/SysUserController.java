@@ -183,13 +183,12 @@ public class SysUserController {
     /**
      * ajax验证邮箱是否可用
      *
-     * @param model
      * @param email
      * @return
      */
     @RequestMapping("/ajaxEmail/{email}")
     @ResponseBody
-    public Map<String, String> ajaxEmail(Model model, @PathVariable("email") String email) {
+    public Map<String, String> ajaxEmail(@PathVariable("email") String email) {
         User user = new User();
         user.setEmail(email);
         List<Map> list = sysUserService.findUser(user);
@@ -268,7 +267,30 @@ public class SysUserController {
 //        转发到显示我上传的实验界面
         return "user/table";
     }
-
+    @RequestMapping("ajaxAcategory")
+    @ResponseBody
+    public List<Map> ajaxAcategory() {
+        System.out.println("---------------------");
+      List<Map> list=sysUserService.findAcategory();
+        System.out.println("---------------"+list);
+        return list;
+    }
+    @RequestMapping("ajaxBcategory")
+    @ResponseBody
+    public List<Map> ajaxBcategory(Bcategory bcategory) {
+        List<Map> list=sysUserService.findBcategory(bcategory);
+        JSONArray jsonArray=JSON.parseArray(JSON.toJSONString(list));
+        System.out.println("Bcategory:"+jsonArray);
+        return list;
+    }
+    @RequestMapping("ajaxCcategory")
+    @ResponseBody
+    public List<Map> ajaxCcategory(Ccategory ccategory) {
+        List<Map> list=sysUserService.findCcategory(ccategory);
+        JSONArray jsonArray=JSON.parseArray(JSON.toJSONString(list));
+        System.out.println("Ccategory:"+jsonArray);
+        return list;
+    }
 
     /**
      * 查找自己所有上传的视频
@@ -282,10 +304,11 @@ public class SysUserController {
         User user = (User) httpSession.getAttribute("user");
         Video video = new Video();
         video.setUid(user.getUid());
+        video.setIsShow(1);
         List<Map> maps = indexService.findVideo(video);
         JSONArray list = JSON.parseArray(JSON.toJSONString(maps));
         model.addAttribute("list", list);
-        return "user/table";
+        return "user/table_experiment";
     }
 
 
@@ -300,8 +323,15 @@ public class SysUserController {
     public String updateMyVideo(Model model, Video video) {
         sysUserService.updateByPrimaryKeySelective(video);
         model.addAttribute("msg", "实验更新成功");
-        return "user/table";
+        return "redirect:/user/showMyVideo.action";
     }
+
+    @RequestMapping("addVideo")
+    public String addVideo(Model model) {
+        System.out.println("ffffffffffffffffffff");
+        return "user/form_experiment";
+    }
+
 
     @RequestMapping("addMyBlog")
     public String addMyBlog(Model model, Blog blog) {

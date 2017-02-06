@@ -55,5 +55,21 @@
         <property name="maxInMemorySize" value="4096"/>
     </bean>
     <!--文件上传 end-->
+    <!-- 拦截器-->
+    <mvc:interceptors>
 
+        <mvc:interceptor>
+            <mvc:mapping path="/user/*"/>
+            <mvc:mapping path="/admin/*"/>
+            <mvc:exclude-mapping path="/admin/login"/>
+            <mvc:exclude-mapping path="/user/uploadcom"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/active/*"/>
+            <mvc:exclude-mapping path="/user/regist"/>
+            <mvc:exclude-mapping path="/user/ajaxEmail/*"/>
+            <mvc:exclude-mapping path="/user/ajaxUserName/*"/>
+            <mvc:exclude-mapping path="/user/logout"/>
+            <bean class="cn.yuhao.experiment.utils.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

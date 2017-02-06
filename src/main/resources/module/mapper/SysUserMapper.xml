@@ -1,44 +1,94 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.yuhao.experiment.mapper.SysUserMapper" >
-  <select id="findUser" resultType="map">
-    SELECT  * from user where 1=1
+<mapper namespace="cn.yuhao.experiment.mapper.SysUserMapper">
+    <select id="findUser" resultType="map">
+        SELECT * from user where 1=1
 
-      <if test="username!=null">
-       and  username=#{username}
-      </if>
-      <if test="password!=null">
-        and  password=#{password}
-      </if>
-      <if test="email!=null">
-        and email=#{email}
-      </if>
-      <if test="isActive!=null">
-        and is_active=#{isActive}
-      </if>
-      <if test="isShow!=null">
-        and is_show=#{isShow}
-      </if>
+        <if test="username!=null">
+            and username=#{username}
+        </if>
+        <if test="password!=null">
+            and password=#{password}
+        </if>
+        <if test="email!=null">
+            and email=#{email}
+        </if>
+        <if test="isActive!=null">
+            and is_active=#{isActive}
+        </if>
+        <if test="isShow!=null">
+            and is_show=#{isShow}
+        </if>
 
-  </select>
-  <select id="findCollectVideo" resultType="map">
+    </select>
+    <select id="findCollectVideo" resultType="map">
     SELECT * FROM collect, video WHERE video.`vid`=collect.`vid` AND collect.uid=#{uid}
   </select>
-<select id="findBlog" resultType="map">
-  SELECT * FROM blog WHERE 1=1
-  <if test="uid!=null">
-    and uid=#{uid}
-  </if>
-  <if test="isShow!=null">
-    and is_show=#{isShow}
-  </if>
-  <if test="isActive!=null">
-    and is_active=#{isActive}
-  </if>
-  <if test="id!=null">
-    and id=#{id}
-  </if>
-</select>
+    <select id="findBlog" resultType="map">
+        SELECT * FROM blog WHERE 1=1
+        <if test="uid!=null">
+            and uid=#{uid}
+        </if>
+        <if test="isShow!=null">
+            and is_show=#{isShow}
+        </if>
+        <if test="isActive!=null">
+            and is_active=#{isActive}
+        </if>
+        <if test="id!=null">
+            and id=#{id}
+        </if>
+    </select>
 
-
+    <select id="findAcategory" resultType="map">
+        SELECT * FROM acategory WHERE 1=1
+        <if test="aid!=null">
+            and aid=#{aid}
+        </if>
+        <if test="aname!=null">
+            and aname=#{aname}
+        </if>
+        <if test="awz!=null">
+            and awz=#{awz}
+        </if>
+        <if test="axs!=null">
+            and axs=#{axs}
+        </if>
+    </select>
+    <select id="findBcategory" resultType="map">
+        SELECT * FROM bcategory WHERE 1=1
+        <if test="bid!=null">
+            and bid=#{bid}
+        </if>
+        <if test="bname!=null">
+            and bname=#{bname}
+        </if>
+        <if test="position!=null">
+            and position=#{position}
+        </if>
+        <if test="aid!=null">
+            and aid=#{aid}
+        </if>
+        <if test="isShow!=null">
+            and is_show=#{isShow}
+        </if>
+    </select>
+    <select id="findCcategory" resultType="map">
+        SELECT * FROM ccategory WHERE 1=1
+        <if test="cid!=null">
+            and cid=#{cid}
+        </if>
+        <if test="cname!=null">
+            and cname=#{cname}
+        </if>
+        <if test="position!=null">
+            and position=#{position}
+        </if>
+        <if test="isShow!=null">
+            and is_show=#{isShow}
+        </if>
+        <if test="bid!=null">
+            and bid=#{bid}
+        </if>
+    </select>
 </mapper>

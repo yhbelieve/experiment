@@ -110,5 +110,20 @@ public class SysUserServiceImpl implements SysUserService {
         return indexMapper.findReply(reply);
     }
 
+    @Override
+    public List<Map> findAcategory() {
+        return sysUserMapper.findAcategory();
+    }
+
+    @Override
+    public List<Map> findBcategory(Bcategory bcategory) {
+        return sysUserMapper.findBcategory(bcategory);
+    }
+
+    @Override
+    public List<Map> findCcategory(Ccategory ccategory) {
+        return sysUserMapper.findCcategory(ccategory);
+    }
+
 
 }
